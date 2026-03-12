@@ -21,73 +21,92 @@ class GlobalPlanner(Node):
     A* global planner on OccupancyGrid.
 
     Inputs:
-      - /map (nav_msgs/OccupancyGrid)
+      - /map        (OccupancyGrid)
+      - /slam_pose  (PoseStamped, map frame)   -> live robot pose
+      - /goal_pose  (PoseStamped, map frame)   -> RViz goal
 
     Outputs:
-      - /global_path (nav_msgs/Path)
-
-    For now, start pose is a fixed (start_x, start_y) parameter (map frame),
-    goal pose is (goal_x, goal_y) parameter (map frame).
-    Later we replace start with TF/odom pose and goal with a service/action.
+      - /global_path (Path, map frame)
     """
 
     def __init__(self):
         super().__init__("amr_global_planner")
 
-        # --- Parameters ---
+        # Topics
         self.declare_parameter("map_topic", "/map")
         self.declare_parameter("path_topic", "/global_path")
+        self.declare_parameter("slam_pose_topic", "/slam_pose")
+        self.declare_parameter("goal_topic", "/goal_pose")
 
-        # Occupancy threshold: cells >= threshold are treated as obstacles (0..100)
+        # Occupancy handling
         self.declare_parameter("occ_threshold", 50)
-
-        # Unknown handling: if false, unknown (-1) treated as obstacle; if true, treated as free
         self.declare_parameter("treat_unknown_as_free", False)
 
-        # Test start/goal in MAP frame (meters)
-        self.declare_parameter("start_x", 0.0)
-        self.declare_parameter("start_y", 0.0)
-        self.declare_parameter("goal_x", 1.0)
-        self.declare_parameter("goal_y", 1.0)
-
-        # Planning frequency (seconds)
-        self.declare_parameter("plan_period", 1.0)
-
-        # Safety cap for expansions (prevents runaway on huge maps)
+        # Planning
+        self.declare_parameter("plan_period", 0.5)
         self.declare_parameter("max_expansions", 300000)
 
+        # Optional safety inflation in cells
+        self.declare_parameter("inflate_cells", 3)
+
         self.map_msg: Optional[OccupancyGrid] = None
+        self.slam_pose: Optional[PoseStamped] = None
+        self.goal_pose: Optional[PoseStamped] = None
+
         self._last_path_len = 0
         self._last_warn = ""
 
         map_topic = self.get_parameter("map_topic").value
         path_topic = self.get_parameter("path_topic").value
+        slam_pose_topic = self.get_parameter("slam_pose_topic").value
+        goal_topic = self.get_parameter("goal_topic").value
         plan_period = float(self.get_parameter("plan_period").value)
 
         self.create_subscription(OccupancyGrid, map_topic, self._map_cb, 10)
-        self.path_pub = self.create_publisher(Path, path_topic, 10)
+        self.create_subscription(PoseStamped, slam_pose_topic, self._slam_pose_cb, 20)
+        self.create_subscription(PoseStamped, goal_topic, self._goal_cb, 10)
 
+        self.path_pub = self.create_publisher(Path, path_topic, 10)
         self.timer = self.create_timer(plan_period, self._tick)
 
         self.get_logger().info(f"Subscribed map: {map_topic}")
+        self.get_logger().info(f"Subscribed slam pose: {slam_pose_topic}")
+        self.get_logger().info(f"Subscribed goal: {goal_topic}")
         self.get_logger().info(f"Publishing path: {path_topic}")
 
     # ---------------- ROS callbacks ----------------
     def _map_cb(self, msg: OccupancyGrid):
         self.map_msg = msg
 
+    def _slam_pose_cb(self, msg: PoseStamped):
+        self.slam_pose = msg
+
+    def _goal_cb(self, msg: PoseStamped):
+        self.goal_pose = msg
+        self.get_logger().info(
+            f"Received new goal: ({msg.pose.position.x:.2f}, {msg.pose.position.y:.2f}) in frame '{msg.header.frame_id}'"
+        )
+
     def _tick(self):
-        if self.map_msg is None:
+        if self.map_msg is None or self.slam_pose is None or self.goal_pose is None:
             return
 
-        sx = float(self.get_parameter("start_x").value)
-        sy = float(self.get_parameter("start_y").value)
-        gx = float(self.get_parameter("goal_x").value)
-        gy = float(self.get_parameter("goal_y").value)
+        # Require consistent map frame
+        if self.goal_pose.header.frame_id and self.goal_pose.header.frame_id != "map":
+            if self._last_warn != "goal_not_map":
+                self.get_logger().warn(
+                    f"Goal frame is '{self.goal_pose.header.frame_id}', expected 'map'. Ignoring goal."
+                )
+                self._last_warn = "goal_not_map"
+            return
+
+        sx = float(self.slam_pose.pose.position.x)
+        sy = float(self.slam_pose.pose.position.y)
+        gx = float(self.goal_pose.pose.position.x)
+        gy = float(self.goal_pose.pose.position.y)
 
         cells = self.plan_astar_world(sx, sy, gx, gy)
         if not cells:
-            # Avoid spamming the same warning every tick
             if self._last_warn != "no_path":
                 self.get_logger().warn("No path found (or start/goal not free).")
                 self._last_warn = "no_path"
@@ -115,7 +134,41 @@ class GlobalPlanner(Node):
         start = world_to_grid(sx, sy, ox, oy, res)
         goal = world_to_grid(gx, gy, ox, oy, res)
 
-        return self.astar(start, goal, w, h, m.data)
+        data = self.inflate_map_if_needed(w, h, m.data)
+
+        return self.astar(start, goal, w, h, data)
+
+    def inflate_map_if_needed(self, w: int, h: int, data) -> List[int]:
+        inflate_cells = int(self.get_parameter("inflate_cells").value)
+        occ_threshold = int(self.get_parameter("occ_threshold").value)
+        treat_unknown_as_free = bool(self.get_parameter("treat_unknown_as_free").value)
+
+        src = list(data)
+        if inflate_cells <= 0:
+            return src
+
+        inflated = src[:]
+        occupied = []
+
+        for j in range(h):
+            row = j * w
+            for i in range(w):
+                v = int(src[row + i])
+                if v >= occ_threshold or (v < 0 and not treat_unknown_as_free):
+                    occupied.append((i, j))
+
+        r2 = inflate_cells * inflate_cells
+        for (cx, cy) in occupied:
+            for dj in range(-inflate_cells, inflate_cells + 1):
+                for di in range(-inflate_cells, inflate_cells + 1):
+                    if di * di + dj * dj > r2:
+                        continue
+                    ni = cx + di
+                    nj = cy + dj
+                    if 0 <= ni < w and 0 <= nj < h:
+                        inflated[nj * w + ni] = 100
+
+        return inflated
 
     def astar(self, start: Cell, goal: Cell, w: int, h: int, data) -> List[Cell]:
         if not self.is_free(start[0], start[1], w, h, data):
@@ -123,6 +176,7 @@ class GlobalPlanner(Node):
                 self.get_logger().warn("Start cell is not free.")
                 self._last_warn = "start_blocked"
             return []
+
         if not self.is_free(goal[0], goal[1], w, h, data):
             if self._last_warn != "goal_blocked":
                 self.get_logger().warn("Goal cell is not free.")
@@ -131,7 +185,7 @@ class GlobalPlanner(Node):
 
         max_expansions = int(self.get_parameter("max_expansions").value)
 
-        open_heap: List[Tuple[float, float, Cell]] = []  # (f, h, cell)
+        open_heap: List[Tuple[float, float, Cell]] = []
         came_from: Dict[Cell, Cell] = {}
         g_score: Dict[Cell, float] = {start: 0.0}
         closed = set()
@@ -161,7 +215,7 @@ class GlobalPlanner(Node):
             cx, cy = current
             current_g = g_score[current]
 
-            for nx, ny in self.neighbors8(cx, cy):
+            for nx, ny in self.neighbors8_no_corner_cut(cx, cy, w, h, data):
                 if not self.is_free(nx, ny, w, h, data):
                     continue
 
@@ -187,17 +241,25 @@ class GlobalPlanner(Node):
 
         v = int(data[j * w + i])
 
-        # Unknown
         if v < 0:
             return bool(self.get_parameter("treat_unknown_as_free").value)
 
         return v < int(self.get_parameter("occ_threshold").value)
 
-    def neighbors8(self, i: int, j: int):
-        # 8-connected neighbors
-        for di, dj in [(-1, 0), (1, 0), (0, -1), (0, 1),
-                       (-1, -1), (-1, 1), (1, -1), (1, 1)]:
-            yield i + di, j + dj
+    def neighbors8_no_corner_cut(self, i: int, j: int, w: int, h: int, data):
+        dirs = [(-1, 0), (1, 0), (0, -1), (0, 1),
+                (-1, -1), (-1, 1), (1, -1), (1, 1)]
+        for di, dj in dirs:
+            ni, nj = i + di, j + dj
+
+            if di != 0 and dj != 0:
+                # block diagonal corner cutting
+                if not self.is_free(i + di, j, w, h, data):
+                    continue
+                if not self.is_free(i, j + dj, w, h, data):
+                    continue
+
+            yield ni, nj
 
     def heuristic_octile(self, a: Cell, b: Cell) -> float:
         ax, ay = a
