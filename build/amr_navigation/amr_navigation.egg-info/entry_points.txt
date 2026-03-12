@@ -1,0 +1,5 @@
+[console_scripts]
+dwa_controller = amr_navigation.dwa_controller:main
+global_planner_node = amr_navigation.global_planner_node:main
+pure_pursuit_controller = amr_navigation.pure_pursuit_controller:main
+

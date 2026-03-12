@@ -1,0 +1,15 @@
+[0.582s] Invoking command in '/home/nihal/amr_ws/build/ekf_slam': PYTHONPATH=/home/nihal/amr_ws/build/ekf_slam/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/ekf_slam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/ekf_slam/build --no-deps symlink_data
+[0.743s] running develop
+[0.842s] running egg_info
+[0.842s] writing ekf_slam.egg-info/PKG-INFO
+[0.844s] writing dependency_links to ekf_slam.egg-info/dependency_links.txt
+[0.844s] writing requirements to ekf_slam.egg-info/requires.txt
+[0.844s] writing top-level names to ekf_slam.egg-info/top_level.txt
+[0.845s] reading manifest file 'ekf_slam.egg-info/SOURCES.txt'
+[0.847s] writing manifest file 'ekf_slam.egg-info/SOURCES.txt'
+[0.847s] running build_ext
+[0.847s] Creating /home/nihal/amr_ws/install/ekf_slam/lib/python3.10/site-packages/ekf-slam.egg-link (link to .)
+[0.847s] 
+[0.847s] Installed /home/nihal/amr_ws/build/ekf_slam
+[0.847s] running symlink_data
+[0.873s] Invoked command in '/home/nihal/amr_ws/build/ekf_slam' returned '0': PYTHONPATH=/home/nihal/amr_ws/build/ekf_slam/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/ekf_slam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/ekf_slam/build --no-deps symlink_data

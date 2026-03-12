@@ -1,0 +1,18 @@
+running develop
+running egg_info
+writing amr_map_tools.egg-info/PKG-INFO
+writing dependency_links to amr_map_tools.egg-info/dependency_links.txt
+writing entry points to amr_map_tools.egg-info/entry_points.txt
+writing requirements to amr_map_tools.egg-info/requires.txt
+writing top-level names to amr_map_tools.egg-info/top_level.txt
+reading manifest file 'amr_map_tools.egg-info/SOURCES.txt'
+writing manifest file 'amr_map_tools.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr-map-tools.egg-link (link to .)
+Installing map_loader_node script to /home/nihal/amr_ws/install/amr_map_tools/lib/amr_map_tools
+Installing map_saver_node script to /home/nihal/amr_ws/install/amr_map_tools/lib/amr_map_tools
+
+Installed /home/nihal/amr_ws/build/amr_map_tools
+running symlink_data
+symbolically linking /home/nihal/amr_ws/build/amr_map_tools/resource/amr_map_tools -> /home/nihal/amr_ws/install/amr_map_tools/share/ament_index/resource_index/packages
+symbolically linking /home/nihal/amr_ws/build/amr_map_tools/package.xml -> /home/nihal/amr_ws/install/amr_map_tools/share/amr_map_tools

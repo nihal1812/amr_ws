@@ -1,0 +1,23 @@
+running egg_info
+writing ../../build/ekf_slam_ros/ekf_slam_ros.egg-info/PKG-INFO
+writing dependency_links to ../../build/ekf_slam_ros/ekf_slam_ros.egg-info/dependency_links.txt
+writing entry points to ../../build/ekf_slam_ros/ekf_slam_ros.egg-info/entry_points.txt
+writing requirements to ../../build/ekf_slam_ros/ekf_slam_ros.egg-info/requires.txt
+writing top-level names to ../../build/ekf_slam_ros/ekf_slam_ros.egg-info/top_level.txt
+reading manifest file '../../build/ekf_slam_ros/ekf_slam_ros.egg-info/SOURCES.txt'
+writing manifest file '../../build/ekf_slam_ros/ekf_slam_ros.egg-info/SOURCES.txt'
+running build
+running build_py
+copying ekf_slam_ros/slam_node.py -> /home/nihal/amr_ws/build/ekf_slam_ros/build/lib/ekf_slam_ros
+running install
+running install_lib
+copying /home/nihal/amr_ws/build/ekf_slam_ros/build/lib/ekf_slam_ros/slam_node.py -> /home/nihal/amr_ws/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros
+byte-compiling /home/nihal/amr_ws/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros/slam_node.py to slam_node.cpython-310.pyc
+running install_data
+copying launch/tb3_warehouse_slam.launch.py -> /home/nihal/amr_ws/install/ekf_slam_ros/share/ekf_slam_ros/launch
+running install_egg_info
+removing '/home/nihal/amr_ws/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/ekf_slam_ros/ekf_slam_ros.egg-info to /home/nihal/amr_ws/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros-0.0.0-py3.10.egg-info
+running install_scripts
+Installing slam_plumbing_node script to /home/nihal/amr_ws/install/ekf_slam_ros/lib/ekf_slam_ros
+writing list of installed files to '/home/nihal/amr_ws/build/ekf_slam_ros/install.log'

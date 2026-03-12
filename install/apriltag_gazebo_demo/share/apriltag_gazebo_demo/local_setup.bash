@@ -1,0 +1,1 @@
+/home/nihal/amr_ws/build/apriltag_gazebo_demo/ament_cmake_environment_hooks/local_setup.bash

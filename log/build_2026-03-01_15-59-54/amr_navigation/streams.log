@@ -1,0 +1,19 @@
+[0.948s] Invoking command in '/home/nihal/amr_ws/build/amr_navigation': PYTHONPATH=/home/nihal/amr_ws/build/amr_navigation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/amr_navigation/build --no-deps symlink_data
+[1.135s] running develop
+[1.258s] running egg_info
+[1.259s] writing amr_navigation.egg-info/PKG-INFO
+[1.259s] writing dependency_links to amr_navigation.egg-info/dependency_links.txt
+[1.261s] writing entry points to amr_navigation.egg-info/entry_points.txt
+[1.261s] writing requirements to amr_navigation.egg-info/requires.txt
+[1.261s] writing top-level names to amr_navigation.egg-info/top_level.txt
+[1.263s] reading manifest file 'amr_navigation.egg-info/SOURCES.txt'
+[1.263s] writing manifest file 'amr_navigation.egg-info/SOURCES.txt'
+[1.265s] running build_ext
+[1.265s] Creating /home/nihal/amr_ws/install/amr_navigation/lib/python3.10/site-packages/amr-navigation.egg-link (link to .)
+[1.265s] Installing dwa_controller script to /home/nihal/amr_ws/install/amr_navigation/lib/amr_navigation
+[1.265s] Installing global_planner_node script to /home/nihal/amr_ws/install/amr_navigation/lib/amr_navigation
+[1.265s] Installing pure_pursuit_controller script to /home/nihal/amr_ws/install/amr_navigation/lib/amr_navigation
+[1.265s] 
+[1.265s] Installed /home/nihal/amr_ws/build/amr_navigation
+[1.265s] running symlink_data
+[1.310s] Invoked command in '/home/nihal/amr_ws/build/amr_navigation' returned '0': PYTHONPATH=/home/nihal/amr_ws/build/amr_navigation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/amr_navigation/build --no-deps symlink_data

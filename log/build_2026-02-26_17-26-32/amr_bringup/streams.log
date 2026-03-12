@@ -1,0 +1,23 @@
+[0.584s] Invoking command in '/home/nihal/amr_ws/build/amr_bringup': PYTHONPATH=/home/nihal/amr_ws/build/amr_bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_bringup/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/amr_bringup/build --no-deps symlink_data
+[0.765s] running develop
+[0.867s] running egg_info
+[0.867s] creating amr_bringup.egg-info
+[0.867s] writing amr_bringup.egg-info/PKG-INFO
+[0.867s] writing dependency_links to amr_bringup.egg-info/dependency_links.txt
+[0.867s] writing entry points to amr_bringup.egg-info/entry_points.txt
+[0.868s] writing requirements to amr_bringup.egg-info/requires.txt
+[0.868s] writing top-level names to amr_bringup.egg-info/top_level.txt
+[0.868s] writing manifest file 'amr_bringup.egg-info/SOURCES.txt'
+[0.869s] reading manifest file 'amr_bringup.egg-info/SOURCES.txt'
+[0.870s] writing manifest file 'amr_bringup.egg-info/SOURCES.txt'
+[0.871s] running build_ext
+[0.871s] Creating /home/nihal/amr_ws/install/amr_bringup/lib/python3.10/site-packages/amr-bringup.egg-link (link to .)
+[0.872s] 
+[0.872s] Installed /home/nihal/amr_ws/build/amr_bringup
+[0.872s] running symlink_data
+[0.872s] creating /home/nihal/amr_ws/install/amr_bringup/share/ament_index
+[0.872s] creating /home/nihal/amr_ws/install/amr_bringup/share/ament_index/resource_index
+[0.872s] creating /home/nihal/amr_ws/install/amr_bringup/share/ament_index/resource_index/packages
+[0.872s] symbolically linking /home/nihal/amr_ws/build/amr_bringup/resource/amr_bringup -> /home/nihal/amr_ws/install/amr_bringup/share/ament_index/resource_index/packages
+[0.872s] symbolically linking /home/nihal/amr_ws/build/amr_bringup/package.xml -> /home/nihal/amr_ws/install/amr_bringup/share/amr_bringup
+[0.893s] Invoked command in '/home/nihal/amr_ws/build/amr_bringup' returned '0': PYTHONPATH=/home/nihal/amr_ws/build/amr_bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_bringup/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/amr_bringup/build --no-deps symlink_data

@@ -1,0 +1,22 @@
+running develop
+running egg_info
+creating amr_navigation.egg-info
+writing amr_navigation.egg-info/PKG-INFO
+writing dependency_links to amr_navigation.egg-info/dependency_links.txt
+writing entry points to amr_navigation.egg-info/entry_points.txt
+writing requirements to amr_navigation.egg-info/requires.txt
+writing top-level names to amr_navigation.egg-info/top_level.txt
+writing manifest file 'amr_navigation.egg-info/SOURCES.txt'
+reading manifest file 'amr_navigation.egg-info/SOURCES.txt'
+writing manifest file 'amr_navigation.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/nihal/amr_ws/install/amr_navigation/lib/python3.10/site-packages/amr-navigation.egg-link (link to .)
+Installing global_planner_node script to /home/nihal/amr_ws/install/amr_navigation/lib/amr_navigation
+
+Installed /home/nihal/amr_ws/build/amr_navigation
+running symlink_data
+creating /home/nihal/amr_ws/install/amr_navigation/share/ament_index
+creating /home/nihal/amr_ws/install/amr_navigation/share/ament_index/resource_index
+creating /home/nihal/amr_ws/install/amr_navigation/share/ament_index/resource_index/packages
+symbolically linking /home/nihal/amr_ws/build/amr_navigation/resource/amr_navigation -> /home/nihal/amr_ws/install/amr_navigation/share/ament_index/resource_index/packages
+symbolically linking /home/nihal/amr_ws/build/amr_navigation/package.xml -> /home/nihal/amr_ws/install/amr_navigation/share/amr_navigation

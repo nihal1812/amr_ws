@@ -1,0 +1,62 @@
+[0.669s] Invoking command in '/home/nihal/amr_ws/build/apriltag_gazebo_demo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nihal/amr_ws/install/amr_navigation:/home/nihal/amr_ws/install/amr_map_tools:/home/nihal/amr_ws/install/ekf_slam_ros:/home/nihal/amr_ws/install/ekf_slam:/home/nihal/amr_ws/install/amr_bringup:/opt/ros/humble /usr/bin/cmake /home/nihal/amr_ws/src/apriltag_gazebo_demo -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/nihal/amr_ws/install/apriltag_gazebo_demo
+[0.772s] -- Found ament_cmake: 1.3.13 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.921s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.968s] -- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.065s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.066s] -- Added test 'lint_cmake' to check CMake code style
+[1.067s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.070s] -- Added test 'xmllint' to check XML markup files
+[1.078s] -- Configuring done
+[1.097s] -- Generating done
+[1.105s] -- Build files have been written to: /home/nihal/amr_ws/build/apriltag_gazebo_demo
+[1.117s] Invoked command in '/home/nihal/amr_ws/build/apriltag_gazebo_demo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nihal/amr_ws/install/amr_navigation:/home/nihal/amr_ws/install/amr_map_tools:/home/nihal/amr_ws/install/ekf_slam_ros:/home/nihal/amr_ws/install/ekf_slam:/home/nihal/amr_ws/install/amr_bringup:/opt/ros/humble /usr/bin/cmake /home/nihal/amr_ws/src/apriltag_gazebo_demo -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/nihal/amr_ws/install/apriltag_gazebo_demo
+[1.118s] Invoking command in '/home/nihal/amr_ws/build/apriltag_gazebo_demo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nihal/amr_ws/install/amr_navigation:/home/nihal/amr_ws/install/amr_map_tools:/home/nihal/amr_ws/install/ekf_slam_ros:/home/nihal/amr_ws/install/ekf_slam:/home/nihal/amr_ws/install/amr_bringup:/opt/ros/humble /usr/bin/cmake --build /home/nihal/amr_ws/build/apriltag_gazebo_demo -- -j10 -l10
+[1.167s] Invoked command in '/home/nihal/amr_ws/build/apriltag_gazebo_demo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nihal/amr_ws/install/amr_navigation:/home/nihal/amr_ws/install/amr_map_tools:/home/nihal/amr_ws/install/ekf_slam_ros:/home/nihal/amr_ws/install/ekf_slam:/home/nihal/amr_ws/install/amr_bringup:/opt/ros/humble /usr/bin/cmake --build /home/nihal/amr_ws/build/apriltag_gazebo_demo -- -j10 -l10
+[1.184s] Invoking command in '/home/nihal/amr_ws/build/apriltag_gazebo_demo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nihal/amr_ws/install/amr_navigation:/home/nihal/amr_ws/install/amr_map_tools:/home/nihal/amr_ws/install/ekf_slam_ros:/home/nihal/amr_ws/install/ekf_slam:/home/nihal/amr_ws/install/amr_bringup:/opt/ros/humble /usr/bin/cmake --install /home/nihal/amr_ws/build/apriltag_gazebo_demo
+[1.190s] -- Install configuration: ""
+[1.190s] -- Execute custom install script
+[1.191s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/launch/tb3_warehouse.launch.py
+[1.191s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/worlds/warehouse_with_tags.world
+[1.192s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id0/materials/scripts/tag.material
+[1.192s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id0/materials/textures/tag.png
+[1.193s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id0/model.config
+[1.194s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id0/model.sdf
+[1.194s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id1/materials/scripts/tag.material
+[1.194s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id1/materials/textures/tag.png
+[1.195s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id1/model.config
+[1.195s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id1/model.sdf
+[1.195s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id2/materials/scripts/tag.material
+[1.195s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id2/materials/textures/tag.png
+[1.195s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id2/model.config
+[1.195s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id2/model.sdf
+[1.196s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id3/materials/scripts/tag.material
+[1.196s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id3/materials/textures/tag.png
+[1.196s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id3/model.config
+[1.196s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id3/model.sdf
+[1.196s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id4/materials/scripts/tag.material
+[1.197s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id4/materials/textures/tag.png
+[1.197s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id4/model.config
+[1.197s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id4/model.sdf
+[1.197s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id5/materials/scripts/tag.material
+[1.197s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id5/materials/textures/tag.png
+[1.197s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id5/model.config
+[1.198s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/apriltag_36h11_id5/model.sdf
+[1.198s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/turtlebot3_waffle_pi/model-1_4_.sdf
+[1.198s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/turtlebot3_waffle_pi/model.config
+[1.198s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/models/turtlebot3_waffle_pi/model.sdf
+[1.198s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/ament_index/resource_index/package_run_dependencies/apriltag_gazebo_demo
+[1.198s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/ament_index/resource_index/parent_prefix_path/apriltag_gazebo_demo
+[1.199s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/environment/ament_prefix_path.sh
+[1.199s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/environment/ament_prefix_path.dsv
+[1.199s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/environment/path.sh
+[1.199s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/environment/path.dsv
+[1.199s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/local_setup.bash
+[1.199s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/local_setup.sh
+[1.200s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/local_setup.zsh
+[1.200s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/local_setup.dsv
+[1.200s] -- Symlinking: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/package.dsv
+[1.210s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/ament_index/resource_index/packages/apriltag_gazebo_demo
+[1.210s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/cmake/apriltag_gazebo_demoConfig.cmake
+[1.211s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/cmake/apriltag_gazebo_demoConfig-version.cmake
+[1.211s] -- Up-to-date symlink: /home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/package.xml
+[1.213s] Invoked command in '/home/nihal/amr_ws/build/apriltag_gazebo_demo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nihal/amr_ws/install/amr_navigation:/home/nihal/amr_ws/install/amr_map_tools:/home/nihal/amr_ws/install/ekf_slam_ros:/home/nihal/amr_ws/install/ekf_slam:/home/nihal/amr_ws/install/amr_bringup:/opt/ros/humble /usr/bin/cmake --install /home/nihal/amr_ws/build/apriltag_gazebo_demo

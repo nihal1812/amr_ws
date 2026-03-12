@@ -1,0 +1,19 @@
+[0.785s] Invoking command in '/home/nihal/amr_ws/src/ekf_slam': PYTHONPATH=/home/nihal/amr_ws/build/ekf_slam/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/ekf_slam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ekf_slam build --build-base /home/nihal/amr_ws/build/ekf_slam/build install --record /home/nihal/amr_ws/build/ekf_slam/install.log --single-version-externally-managed install_data
+[0.993s] running egg_info
+[0.993s] writing ../../build/ekf_slam/ekf_slam.egg-info/PKG-INFO
+[0.993s] writing dependency_links to ../../build/ekf_slam/ekf_slam.egg-info/dependency_links.txt
+[0.993s] writing requirements to ../../build/ekf_slam/ekf_slam.egg-info/requires.txt
+[0.993s] writing top-level names to ../../build/ekf_slam/ekf_slam.egg-info/top_level.txt
+[0.995s] reading manifest file '../../build/ekf_slam/ekf_slam.egg-info/SOURCES.txt'
+[0.996s] writing manifest file '../../build/ekf_slam/ekf_slam.egg-info/SOURCES.txt'
+[0.996s] running build
+[0.996s] running build_py
+[0.996s] running install
+[0.997s] running install_lib
+[0.998s] running install_data
+[0.998s] running install_egg_info
+[1.000s] removing '/home/nihal/amr_ws/install/ekf_slam/lib/python3.10/site-packages/ekf_slam-0.0.1-py3.10.egg-info' (and everything under it)
+[1.000s] Copying ../../build/ekf_slam/ekf_slam.egg-info to /home/nihal/amr_ws/install/ekf_slam/lib/python3.10/site-packages/ekf_slam-0.0.1-py3.10.egg-info
+[1.001s] running install_scripts
+[1.019s] writing list of installed files to '/home/nihal/amr_ws/build/ekf_slam/install.log'
+[1.036s] Invoked command in '/home/nihal/amr_ws/src/ekf_slam' returned '0': PYTHONPATH=/home/nihal/amr_ws/build/ekf_slam/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/ekf_slam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ekf_slam build --build-base /home/nihal/amr_ws/build/ekf_slam/build install --record /home/nihal/amr_ws/build/ekf_slam/install.log --single-version-externally-managed install_data

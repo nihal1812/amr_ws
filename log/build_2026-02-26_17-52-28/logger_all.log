@@ -1,0 +1,301 @@
+[0.078s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install']
+[0.078s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=10, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7647ed15c8e0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7647ed15c2e0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7647ed15c2e0>>, mixin_verb=('build',))
+[0.189s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.189s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.189s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.189s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.189s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.189s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.189s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/nihal/amr_ws'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.196s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.196s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.196s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.196s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.196s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.196s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.196s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.196s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.196s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.196s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.196s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src/amr_bringup) by extensions ['ignore', 'ignore_ament_install']
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src/amr_bringup) by extension 'ignore'
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src/amr_bringup) by extension 'ignore_ament_install'
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src/amr_bringup) by extensions ['colcon_pkg']
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src/amr_bringup) by extension 'colcon_pkg'
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src/amr_bringup) by extensions ['colcon_meta']
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src/amr_bringup) by extension 'colcon_meta'
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src/amr_bringup) by extensions ['ros']
+[0.197s] Level 1:colcon.colcon_core.package_identification:_identify(src/amr_bringup) by extension 'ros'
+[0.199s] DEBUG:colcon.colcon_core.package_identification:Package 'src/amr_bringup' with type 'ros.ament_python' and name 'amr_bringup'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(src/apriltag_gazebo_demo) by extensions ['ignore', 'ignore_ament_install']
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(src/apriltag_gazebo_demo) by extension 'ignore'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(src/apriltag_gazebo_demo) by extension 'ignore_ament_install'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(src/apriltag_gazebo_demo) by extensions ['colcon_pkg']
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(src/apriltag_gazebo_demo) by extension 'colcon_pkg'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(src/apriltag_gazebo_demo) by extensions ['colcon_meta']
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(src/apriltag_gazebo_demo) by extension 'colcon_meta'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(src/apriltag_gazebo_demo) by extensions ['ros']
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(src/apriltag_gazebo_demo) by extension 'ros'
+[0.199s] DEBUG:colcon.colcon_core.package_identification:Package 'src/apriltag_gazebo_demo' with type 'ros.ament_cmake' and name 'apriltag_gazebo_demo'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam) by extensions ['ignore', 'ignore_ament_install']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam) by extension 'ignore'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam) by extension 'ignore_ament_install'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam) by extensions ['colcon_pkg']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam) by extension 'colcon_pkg'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam) by extensions ['colcon_meta']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam) by extension 'colcon_meta'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam) by extensions ['ros']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam) by extension 'ros'
+[0.206s] DEBUG:colcon.colcon_core.package_identification:Package 'src/ekf_slam' with type 'ros.ament_python' and name 'ekf_slam'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam_ros) by extensions ['ignore', 'ignore_ament_install']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam_ros) by extension 'ignore'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam_ros) by extension 'ignore_ament_install'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam_ros) by extensions ['colcon_pkg']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam_ros) by extension 'colcon_pkg'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam_ros) by extensions ['colcon_meta']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam_ros) by extension 'colcon_meta'
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam_ros) by extensions ['ros']
+[0.206s] Level 1:colcon.colcon_core.package_identification:_identify(src/ekf_slam_ros) by extension 'ros'
+[0.207s] DEBUG:colcon.colcon_core.package_identification:Package 'src/ekf_slam_ros' with type 'ros.ament_python' and name 'ekf_slam_ros'
+[0.207s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.207s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.207s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.207s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.207s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.220s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.220s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.221s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 4 installed packages in /home/nihal/amr_ws/install
+[0.223s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 468 installed packages in /opt/ros/humble
+[0.224s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.256s] Level 5:colcon.colcon_core.verb:set package 'amr_bringup' build argument 'cmake_args' from command line to 'None'
+[0.256s] Level 5:colcon.colcon_core.verb:set package 'amr_bringup' build argument 'cmake_target' from command line to 'None'
+[0.256s] Level 5:colcon.colcon_core.verb:set package 'amr_bringup' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.256s] Level 5:colcon.colcon_core.verb:set package 'amr_bringup' build argument 'cmake_clean_cache' from command line to 'False'
+[0.256s] Level 5:colcon.colcon_core.verb:set package 'amr_bringup' build argument 'cmake_clean_first' from command line to 'False'
+[0.256s] Level 5:colcon.colcon_core.verb:set package 'amr_bringup' build argument 'cmake_force_configure' from command line to 'False'
+[0.256s] Level 5:colcon.colcon_core.verb:set package 'amr_bringup' build argument 'ament_cmake_args' from command line to 'None'
+[0.256s] Level 5:colcon.colcon_core.verb:set package 'amr_bringup' build argument 'catkin_cmake_args' from command line to 'None'
+[0.256s] Level 5:colcon.colcon_core.verb:set package 'amr_bringup' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.256s] DEBUG:colcon.colcon_core.verb:Building package 'amr_bringup' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nihal/amr_ws/build/amr_bringup', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nihal/amr_ws/install/amr_bringup', 'merge_install': False, 'path': '/home/nihal/amr_ws/src/amr_bringup', 'symlink_install': True, 'test_result_base': None}
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'apriltag_gazebo_demo' build argument 'cmake_args' from command line to 'None'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'apriltag_gazebo_demo' build argument 'cmake_target' from command line to 'None'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'apriltag_gazebo_demo' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'apriltag_gazebo_demo' build argument 'cmake_clean_cache' from command line to 'False'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'apriltag_gazebo_demo' build argument 'cmake_clean_first' from command line to 'False'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'apriltag_gazebo_demo' build argument 'cmake_force_configure' from command line to 'False'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'apriltag_gazebo_demo' build argument 'ament_cmake_args' from command line to 'None'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'apriltag_gazebo_demo' build argument 'catkin_cmake_args' from command line to 'None'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'apriltag_gazebo_demo' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.257s] DEBUG:colcon.colcon_core.verb:Building package 'apriltag_gazebo_demo' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nihal/amr_ws/build/apriltag_gazebo_demo', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nihal/amr_ws/install/apriltag_gazebo_demo', 'merge_install': False, 'path': '/home/nihal/amr_ws/src/apriltag_gazebo_demo', 'symlink_install': True, 'test_result_base': None}
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam' build argument 'cmake_args' from command line to 'None'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam' build argument 'cmake_target' from command line to 'None'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam' build argument 'cmake_clean_cache' from command line to 'False'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam' build argument 'cmake_clean_first' from command line to 'False'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam' build argument 'cmake_force_configure' from command line to 'False'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam' build argument 'ament_cmake_args' from command line to 'None'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam' build argument 'catkin_cmake_args' from command line to 'None'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.257s] DEBUG:colcon.colcon_core.verb:Building package 'ekf_slam' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nihal/amr_ws/build/ekf_slam', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nihal/amr_ws/install/ekf_slam', 'merge_install': False, 'path': '/home/nihal/amr_ws/src/ekf_slam', 'symlink_install': True, 'test_result_base': None}
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam_ros' build argument 'cmake_args' from command line to 'None'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam_ros' build argument 'cmake_target' from command line to 'None'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam_ros' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam_ros' build argument 'cmake_clean_cache' from command line to 'False'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam_ros' build argument 'cmake_clean_first' from command line to 'False'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam_ros' build argument 'cmake_force_configure' from command line to 'False'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam_ros' build argument 'ament_cmake_args' from command line to 'None'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam_ros' build argument 'catkin_cmake_args' from command line to 'None'
+[0.257s] Level 5:colcon.colcon_core.verb:set package 'ekf_slam_ros' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.257s] DEBUG:colcon.colcon_core.verb:Building package 'ekf_slam_ros' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nihal/amr_ws/build/ekf_slam_ros', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nihal/amr_ws/install/ekf_slam_ros', 'merge_install': False, 'path': '/home/nihal/amr_ws/src/ekf_slam_ros', 'symlink_install': True, 'test_result_base': None}
+[0.258s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.258s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.259s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nihal/amr_ws/src/ekf_slam' with build type 'ament_python'
+[0.259s] Level 1:colcon.colcon_core.shell:create_environment_hook('ekf_slam', 'ament_prefix_path')
+[0.260s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.260s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/ekf_slam/share/ekf_slam/hook/ament_prefix_path.ps1'
+[0.261s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nihal/amr_ws/install/ekf_slam/share/ekf_slam/hook/ament_prefix_path.dsv'
+[0.261s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/ekf_slam/share/ekf_slam/hook/ament_prefix_path.sh'
+[0.262s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.262s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.265s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nihal/amr_ws/src/amr_bringup' with build type 'ament_python'
+[0.265s] Level 1:colcon.colcon_core.shell:create_environment_hook('amr_bringup', 'ament_prefix_path')
+[0.265s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/amr_bringup/share/amr_bringup/hook/ament_prefix_path.ps1'
+[0.266s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nihal/amr_ws/install/amr_bringup/share/amr_bringup/hook/ament_prefix_path.dsv'
+[0.266s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/amr_bringup/share/amr_bringup/hook/ament_prefix_path.sh'
+[0.267s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.267s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.270s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/nihal/amr_ws/src/apriltag_gazebo_demo' with build type 'ament_cmake'
+[0.270s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/nihal/amr_ws/src/apriltag_gazebo_demo'
+[0.270s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.270s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.448s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nihal/amr_ws/src/ekf_slam'
+[0.448s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.448s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.621s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nihal/amr_ws/src/amr_bringup'
+[0.621s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.621s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.629s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nihal/amr_ws/build/apriltag_gazebo_demo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nihal/amr_ws/install/ekf_slam_ros:/home/nihal/amr_ws/install/ekf_slam:/home/nihal/amr_ws/install/amr_bringup:/opt/ros/humble /usr/bin/cmake --build /home/nihal/amr_ws/build/apriltag_gazebo_demo -- -j10 -l10
+[0.671s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nihal/amr_ws/build/apriltag_gazebo_demo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nihal/amr_ws/install/ekf_slam_ros:/home/nihal/amr_ws/install/ekf_slam:/home/nihal/amr_ws/install/amr_bringup:/opt/ros/humble /usr/bin/cmake --build /home/nihal/amr_ws/build/apriltag_gazebo_demo -- -j10 -l10
+[0.685s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nihal/amr_ws/build/apriltag_gazebo_demo': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nihal/amr_ws/install/ekf_slam_ros:/home/nihal/amr_ws/install/ekf_slam:/home/nihal/amr_ws/install/amr_bringup:/opt/ros/humble /usr/bin/cmake --install /home/nihal/amr_ws/build/apriltag_gazebo_demo
+[0.717s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(apriltag_gazebo_demo)
+[0.717s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nihal/amr_ws/build/apriltag_gazebo_demo' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nihal/amr_ws/install/ekf_slam_ros:/home/nihal/amr_ws/install/ekf_slam:/home/nihal/amr_ws/install/amr_bringup:/opt/ros/humble /usr/bin/cmake --install /home/nihal/amr_ws/build/apriltag_gazebo_demo
+[0.718s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/apriltag_gazebo_demo' for CMake module files
+[0.719s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/apriltag_gazebo_demo' for CMake config files
+[0.719s] Level 1:colcon.colcon_core.shell:create_environment_hook('apriltag_gazebo_demo', 'cmake_prefix_path')
+[0.719s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/hook/cmake_prefix_path.ps1'
+[0.720s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/hook/cmake_prefix_path.dsv'
+[0.720s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/hook/cmake_prefix_path.sh'
+[0.721s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/apriltag_gazebo_demo/bin'
+[0.721s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/apriltag_gazebo_demo/lib/pkgconfig/apriltag_gazebo_demo.pc'
+[0.721s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/apriltag_gazebo_demo/lib/python3.10/site-packages'
+[0.721s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/apriltag_gazebo_demo/bin'
+[0.722s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/package.ps1'
+[0.723s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/package.dsv'
+[0.723s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/package.sh'
+[0.723s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/package.bash'
+[0.724s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/package.zsh'
+[0.725s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/colcon-core/packages/apriltag_gazebo_demo)
+[0.726s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(apriltag_gazebo_demo)
+[0.726s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/apriltag_gazebo_demo' for CMake module files
+[0.726s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/apriltag_gazebo_demo' for CMake config files
+[0.726s] Level 1:colcon.colcon_core.shell:create_environment_hook('apriltag_gazebo_demo', 'cmake_prefix_path')
+[0.726s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/hook/cmake_prefix_path.ps1'
+[0.726s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/hook/cmake_prefix_path.dsv'
+[0.727s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/hook/cmake_prefix_path.sh'
+[0.728s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/apriltag_gazebo_demo/bin'
+[0.728s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/apriltag_gazebo_demo/lib/pkgconfig/apriltag_gazebo_demo.pc'
+[0.728s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/apriltag_gazebo_demo/lib/python3.10/site-packages'
+[0.729s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/apriltag_gazebo_demo/bin'
+[0.729s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/package.ps1'
+[0.729s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/package.dsv'
+[0.730s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/package.sh'
+[0.730s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/package.bash'
+[0.731s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/apriltag_gazebo_demo/package.zsh'
+[0.732s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nihal/amr_ws/install/apriltag_gazebo_demo/share/colcon-core/packages/apriltag_gazebo_demo)
+[0.900s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nihal/amr_ws/build/ekf_slam': PYTHONPATH=/home/nihal/amr_ws/build/ekf_slam/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/ekf_slam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/ekf_slam/build --no-deps symlink_data
+[0.900s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nihal/amr_ws/build/amr_bringup': PYTHONPATH=/home/nihal/amr_ws/build/amr_bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_bringup/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/amr_bringup/build --no-deps symlink_data
+[1.212s] Level 1:colcon.colcon_core.shell:create_environment_hook('ekf_slam', 'pythonpath_develop')
+[1.212s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/build/ekf_slam/share/ekf_slam/hook/pythonpath_develop.ps1'
+[1.213s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nihal/amr_ws/build/ekf_slam' returned '0': PYTHONPATH=/home/nihal/amr_ws/build/ekf_slam/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/ekf_slam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/ekf_slam/build --no-deps symlink_data
+[1.213s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nihal/amr_ws/build/ekf_slam/share/ekf_slam/hook/pythonpath_develop.dsv'
+[1.214s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/build/ekf_slam/share/ekf_slam/hook/pythonpath_develop.sh'
+[1.214s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/ekf_slam' for CMake module files
+[1.215s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/ekf_slam' for CMake config files
+[1.215s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/ekf_slam/lib'
+[1.215s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/ekf_slam/bin'
+[1.215s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/ekf_slam/lib/pkgconfig/ekf_slam.pc'
+[1.217s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/ekf_slam/lib/python3.10/site-packages'
+[1.217s] Level 1:colcon.colcon_core.shell:create_environment_hook('ekf_slam', 'pythonpath')
+[1.217s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/ekf_slam/share/ekf_slam/hook/pythonpath.ps1'
+[1.217s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nihal/amr_ws/install/ekf_slam/share/ekf_slam/hook/pythonpath.dsv'
+[1.218s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/ekf_slam/share/ekf_slam/hook/pythonpath.sh'
+[1.218s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/ekf_slam/bin'
+[1.218s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ekf_slam)
+[1.219s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/ekf_slam/share/ekf_slam/package.ps1'
+[1.219s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nihal/amr_ws/install/ekf_slam/share/ekf_slam/package.dsv'
+[1.220s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/ekf_slam/share/ekf_slam/package.sh'
+[1.220s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/ekf_slam/share/ekf_slam/package.bash'
+[1.221s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/ekf_slam/share/ekf_slam/package.zsh'
+[1.221s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nihal/amr_ws/install/ekf_slam/share/colcon-core/packages/ekf_slam)
+[1.222s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nihal/amr_ws/src/ekf_slam_ros' with build type 'ament_python'
+[1.222s] Level 1:colcon.colcon_core.shell:create_environment_hook('ekf_slam_ros', 'ament_prefix_path')
+[1.222s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/ekf_slam_ros/share/ekf_slam_ros/hook/ament_prefix_path.ps1'
+[1.223s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nihal/amr_ws/install/ekf_slam_ros/share/ekf_slam_ros/hook/ament_prefix_path.dsv'
+[1.223s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/ekf_slam_ros/share/ekf_slam_ros/hook/ament_prefix_path.sh'
+[1.224s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.224s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.228s] Level 1:colcon.colcon_core.shell:create_environment_hook('amr_bringup', 'pythonpath_develop')
+[1.228s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nihal/amr_ws/build/amr_bringup' returned '0': PYTHONPATH=/home/nihal/amr_ws/build/amr_bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_bringup/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/amr_bringup/build --no-deps symlink_data
+[1.229s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/build/amr_bringup/share/amr_bringup/hook/pythonpath_develop.ps1'
+[1.229s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nihal/amr_ws/build/amr_bringup/share/amr_bringup/hook/pythonpath_develop.dsv'
+[1.230s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/build/amr_bringup/share/amr_bringup/hook/pythonpath_develop.sh'
+[1.231s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/amr_bringup' for CMake module files
+[1.231s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/amr_bringup' for CMake config files
+[1.231s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/amr_bringup/lib'
+[1.231s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/amr_bringup/bin'
+[1.231s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/amr_bringup/lib/pkgconfig/amr_bringup.pc'
+[1.231s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/amr_bringup/lib/python3.10/site-packages'
+[1.231s] Level 1:colcon.colcon_core.shell:create_environment_hook('amr_bringup', 'pythonpath')
+[1.232s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/amr_bringup/share/amr_bringup/hook/pythonpath.ps1'
+[1.232s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nihal/amr_ws/install/amr_bringup/share/amr_bringup/hook/pythonpath.dsv'
+[1.232s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/amr_bringup/share/amr_bringup/hook/pythonpath.sh'
+[1.233s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/amr_bringup/bin'
+[1.233s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(amr_bringup)
+[1.234s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/amr_bringup/share/amr_bringup/package.ps1'
+[1.234s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nihal/amr_ws/install/amr_bringup/share/amr_bringup/package.dsv'
+[1.236s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/amr_bringup/share/amr_bringup/package.sh'
+[1.238s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/amr_bringup/share/amr_bringup/package.bash'
+[1.238s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/amr_bringup/share/amr_bringup/package.zsh'
+[1.239s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nihal/amr_ws/install/amr_bringup/share/colcon-core/packages/amr_bringup)
+[1.417s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nihal/amr_ws/src/ekf_slam_ros'
+[1.417s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.417s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.658s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nihal/amr_ws/build/ekf_slam_ros': AMENT_PREFIX_PATH=/home/nihal/amr_ws/install/ekf_slam:/home/nihal/amr_ws/install/ekf_slam_ros:/home/nihal/amr_ws/install/apriltag_gazebo_demo:/home/nihal/amr_ws/install/amr_bringup:/opt/ros/humble PYTHONPATH=/home/nihal/amr_ws/build/ekf_slam_ros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/ekf_slam_ros/lib/python3.10/site-packages:/home/nihal/amr_ws/build/ekf_slam:/home/nihal/amr_ws/install/ekf_slam/lib/python3.10/site-packages:/home/nihal/amr_ws/build/ekf_slam_ros:/home/nihal/amr_ws/build/amr_bringup:/home/nihal/amr_ws/install/ekf_slam_ros/lib/python3.10/site-packages:/home/nihal/amr_ws/install/amr_bringup/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/ekf_slam_ros/build --no-deps symlink_data
+[1.954s] Level 1:colcon.colcon_core.shell:create_environment_hook('ekf_slam_ros', 'pythonpath_develop')
+[1.954s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/build/ekf_slam_ros/share/ekf_slam_ros/hook/pythonpath_develop.ps1'
+[1.955s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nihal/amr_ws/build/ekf_slam_ros' returned '0': AMENT_PREFIX_PATH=/home/nihal/amr_ws/install/ekf_slam:/home/nihal/amr_ws/install/ekf_slam_ros:/home/nihal/amr_ws/install/apriltag_gazebo_demo:/home/nihal/amr_ws/install/amr_bringup:/opt/ros/humble PYTHONPATH=/home/nihal/amr_ws/build/ekf_slam_ros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/ekf_slam_ros/lib/python3.10/site-packages:/home/nihal/amr_ws/build/ekf_slam:/home/nihal/amr_ws/install/ekf_slam/lib/python3.10/site-packages:/home/nihal/amr_ws/build/ekf_slam_ros:/home/nihal/amr_ws/build/amr_bringup:/home/nihal/amr_ws/install/ekf_slam_ros/lib/python3.10/site-packages:/home/nihal/amr_ws/install/amr_bringup/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/ekf_slam_ros/build --no-deps symlink_data
+[1.956s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nihal/amr_ws/build/ekf_slam_ros/share/ekf_slam_ros/hook/pythonpath_develop.dsv'
+[1.956s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/build/ekf_slam_ros/share/ekf_slam_ros/hook/pythonpath_develop.sh'
+[1.957s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/ekf_slam_ros' for CMake module files
+[1.958s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/ekf_slam_ros' for CMake config files
+[1.958s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/ekf_slam_ros/lib'
+[1.958s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/ekf_slam_ros/bin'
+[1.958s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/ekf_slam_ros/lib/pkgconfig/ekf_slam_ros.pc'
+[1.958s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/ekf_slam_ros/lib/python3.10/site-packages'
+[1.958s] Level 1:colcon.colcon_core.shell:create_environment_hook('ekf_slam_ros', 'pythonpath')
+[1.958s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/ekf_slam_ros/share/ekf_slam_ros/hook/pythonpath.ps1'
+[1.959s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nihal/amr_ws/install/ekf_slam_ros/share/ekf_slam_ros/hook/pythonpath.dsv'
+[1.959s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nihal/amr_ws/install/ekf_slam_ros/share/ekf_slam_ros/hook/pythonpath.sh'
+[1.960s] Level 1:colcon.colcon_core.environment:checking '/home/nihal/amr_ws/install/ekf_slam_ros/bin'
+[1.960s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ekf_slam_ros)
+[1.960s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/ekf_slam_ros/share/ekf_slam_ros/package.ps1'
+[1.961s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nihal/amr_ws/install/ekf_slam_ros/share/ekf_slam_ros/package.dsv'
+[1.961s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/ekf_slam_ros/share/ekf_slam_ros/package.sh'
+[1.962s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/ekf_slam_ros/share/ekf_slam_ros/package.bash'
+[1.962s] INFO:colcon.colcon_core.shell:Creating package script '/home/nihal/amr_ws/install/ekf_slam_ros/share/ekf_slam_ros/package.zsh'
+[1.963s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nihal/amr_ws/install/ekf_slam_ros/share/colcon-core/packages/ekf_slam_ros)
+[1.963s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.964s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.964s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[1.964s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.968s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.968s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.968s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.979s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.979s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nihal/amr_ws/install/local_setup.ps1'
+[1.980s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/nihal/amr_ws/install/_local_setup_util_ps1.py'
+[1.981s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nihal/amr_ws/install/setup.ps1'
+[1.983s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nihal/amr_ws/install/local_setup.sh'
+[1.983s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/nihal/amr_ws/install/_local_setup_util_sh.py'
+[1.985s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nihal/amr_ws/install/setup.sh'
+[1.986s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nihal/amr_ws/install/local_setup.bash'
+[1.987s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nihal/amr_ws/install/setup.bash'
+[1.988s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nihal/amr_ws/install/local_setup.zsh'
+[1.988s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nihal/amr_ws/install/setup.zsh'

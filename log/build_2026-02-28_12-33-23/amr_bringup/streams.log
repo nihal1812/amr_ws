@@ -1,0 +1,20 @@
+[0.800s] Invoking command in '/home/nihal/amr_ws/src/amr_bringup': PYTHONPATH=/home/nihal/amr_ws/build/amr_bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_bringup/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/amr_bringup build --build-base /home/nihal/amr_ws/build/amr_bringup/build install --record /home/nihal/amr_ws/build/amr_bringup/install.log --single-version-externally-managed install_data
+[0.955s] running egg_info
+[0.956s] writing ../../build/amr_bringup/amr_bringup.egg-info/PKG-INFO
+[0.958s] writing dependency_links to ../../build/amr_bringup/amr_bringup.egg-info/dependency_links.txt
+[0.958s] writing entry points to ../../build/amr_bringup/amr_bringup.egg-info/entry_points.txt
+[0.958s] writing requirements to ../../build/amr_bringup/amr_bringup.egg-info/requires.txt
+[0.959s] writing top-level names to ../../build/amr_bringup/amr_bringup.egg-info/top_level.txt
+[0.960s] reading manifest file '../../build/amr_bringup/amr_bringup.egg-info/SOURCES.txt'
+[0.962s] writing manifest file '../../build/amr_bringup/amr_bringup.egg-info/SOURCES.txt'
+[0.962s] running build
+[0.962s] running build_py
+[0.963s] running install
+[0.964s] running install_lib
+[0.965s] running install_data
+[0.966s] running install_egg_info
+[0.967s] removing '/home/nihal/amr_ws/install/amr_bringup/lib/python3.10/site-packages/amr_bringup-0.0.0-py3.10.egg-info' (and everything under it)
+[0.968s] Copying ../../build/amr_bringup/amr_bringup.egg-info to /home/nihal/amr_ws/install/amr_bringup/lib/python3.10/site-packages/amr_bringup-0.0.0-py3.10.egg-info
+[0.969s] running install_scripts
+[0.983s] writing list of installed files to '/home/nihal/amr_ws/build/amr_bringup/install.log'
+[1.000s] Invoked command in '/home/nihal/amr_ws/src/amr_bringup' returned '0': PYTHONPATH=/home/nihal/amr_ws/build/amr_bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_bringup/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/amr_bringup build --build-base /home/nihal/amr_ws/build/amr_bringup/build install --record /home/nihal/amr_ws/build/amr_bringup/install.log --single-version-externally-managed install_data

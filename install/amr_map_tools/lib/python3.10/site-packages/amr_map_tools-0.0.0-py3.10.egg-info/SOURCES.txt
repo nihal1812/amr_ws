@@ -1,0 +1,17 @@
+package.xml
+setup.cfg
+setup.py
+../../build/amr_map_tools/amr_map_tools.egg-info/PKG-INFO
+../../build/amr_map_tools/amr_map_tools.egg-info/SOURCES.txt
+../../build/amr_map_tools/amr_map_tools.egg-info/dependency_links.txt
+../../build/amr_map_tools/amr_map_tools.egg-info/entry_points.txt
+../../build/amr_map_tools/amr_map_tools.egg-info/requires.txt
+../../build/amr_map_tools/amr_map_tools.egg-info/top_level.txt
+../../build/amr_map_tools/amr_map_tools.egg-info/zip-safe
+amr_map_tools/__init__.py
+amr_map_tools/map_loader_node.py
+amr_map_tools/map_saver_node.py
+resource/amr_map_tools
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py

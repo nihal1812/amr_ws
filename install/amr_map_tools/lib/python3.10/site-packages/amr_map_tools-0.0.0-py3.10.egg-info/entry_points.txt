@@ -1,0 +1,4 @@
+[console_scripts]
+map_loader_node = amr_map_tools.map_loader_node:main
+map_saver_node = amr_map_tools.map_saver_node:main
+

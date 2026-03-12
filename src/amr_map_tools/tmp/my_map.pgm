@@ -1,0 +1,17 @@
+import numpy as np
+
+w,h = 20,20
+img = np.full((h,w), 254, dtype=np.uint8)   # free = white
+img[0,:] = 0
+img[-1,:] = 0
+img[:,0] = 0
+img[:,-1] = 0                               # border walls (occupied = black)
+img[10,5:15] = 0                            # a horizontal obstacle
+
+path = "/tmp/my_map.pgm"
+with open(path,"wb") as f:
+    f.write(b"P5\n")
+    f.write(b"# test map\n")
+    f.write(f"{w} {h}\n255\n".encode())
+    f.write(img.tobytes())
+print("Wrote", path)

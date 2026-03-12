@@ -1,0 +1,24 @@
+[0.385s] Invoking command in '/home/nihal/amr_ws/src/ekf_slam_ros': PYTHONPATH=/home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/ekf_slam_ros build --build-base /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/build install --record /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/install.log --single-version-externally-managed install_data
+[0.522s] running egg_info
+[0.522s] writing build/ekf_slam_ros/ekf_slam_ros.egg-info/PKG-INFO
+[0.523s] writing dependency_links to build/ekf_slam_ros/ekf_slam_ros.egg-info/dependency_links.txt
+[0.523s] writing entry points to build/ekf_slam_ros/ekf_slam_ros.egg-info/entry_points.txt
+[0.523s] writing requirements to build/ekf_slam_ros/ekf_slam_ros.egg-info/requires.txt
+[0.523s] writing top-level names to build/ekf_slam_ros/ekf_slam_ros.egg-info/top_level.txt
+[0.525s] reading manifest file 'build/ekf_slam_ros/ekf_slam_ros.egg-info/SOURCES.txt'
+[0.525s] writing manifest file 'build/ekf_slam_ros/ekf_slam_ros.egg-info/SOURCES.txt'
+[0.525s] running build
+[0.525s] running build_py
+[0.525s] copying ekf_slam_ros/slam_node.py -> /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/build/lib/ekf_slam_ros
+[0.527s] running install
+[0.527s] running install_lib
+[0.527s] copying /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/build/lib/ekf_slam_ros/slam_node.py -> /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros
+[0.527s] byte-compiling /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros/slam_node.py to slam_node.cpython-310.pyc
+[0.527s] running install_data
+[0.527s] running install_egg_info
+[0.531s] removing '/home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros-0.0.0-py3.10.egg-info' (and everything under it)
+[0.531s] Copying build/ekf_slam_ros/ekf_slam_ros.egg-info to /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros-0.0.0-py3.10.egg-info
+[0.531s] running install_scripts
+[0.542s] Installing slam_plumbing_node script to /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/ekf_slam_ros
+[0.542s] writing list of installed files to '/home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/install.log'
+[0.557s] Invoked command in '/home/nihal/amr_ws/src/ekf_slam_ros' returned '0': PYTHONPATH=/home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/ekf_slam_ros build --build-base /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/build install --record /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/install.log --single-version-externally-managed install_data

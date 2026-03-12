@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="apriltag_36h11_id2">
+    <static>true</static>
+
+    <!-- Pose: x y z roll pitch yaw -->
+    <pose>2 0 1 0 0 0</pose>
+
+    <link name="tag_link">
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.2 0.2 0.001</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.2 0.2 0.001</size>
+          </box>
+        </geometry>
+
+        <material>
+          <script>
+            <uri>model://apriltag_36h11_id2/materials/scripts</uri>
+            <uri>model://apriltag_36h11_id2/materials/textures</uri>
+            <name>AprilTag/Tag0</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

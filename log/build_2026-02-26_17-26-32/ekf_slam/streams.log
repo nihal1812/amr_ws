@@ -1,0 +1,22 @@
+[0.680s] Invoking command in '/home/nihal/amr_ws/build/ekf_slam': PYTHONPATH=/home/nihal/amr_ws/build/ekf_slam/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/ekf_slam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/ekf_slam/build --no-deps symlink_data
+[0.858s] running develop
+[0.965s] running egg_info
+[0.966s] creating ekf_slam.egg-info
+[0.966s] writing ekf_slam.egg-info/PKG-INFO
+[0.966s] writing dependency_links to ekf_slam.egg-info/dependency_links.txt
+[0.966s] writing requirements to ekf_slam.egg-info/requires.txt
+[0.966s] writing top-level names to ekf_slam.egg-info/top_level.txt
+[0.966s] writing manifest file 'ekf_slam.egg-info/SOURCES.txt'
+[0.966s] reading manifest file 'ekf_slam.egg-info/SOURCES.txt'
+[0.966s] writing manifest file 'ekf_slam.egg-info/SOURCES.txt'
+[0.967s] running build_ext
+[0.967s] Creating /home/nihal/amr_ws/install/ekf_slam/lib/python3.10/site-packages/ekf-slam.egg-link (link to .)
+[0.968s] 
+[0.968s] Installed /home/nihal/amr_ws/build/ekf_slam
+[0.968s] running symlink_data
+[0.968s] creating /home/nihal/amr_ws/install/ekf_slam/share/ament_index
+[0.968s] creating /home/nihal/amr_ws/install/ekf_slam/share/ament_index/resource_index
+[0.968s] creating /home/nihal/amr_ws/install/ekf_slam/share/ament_index/resource_index/packages
+[0.968s] symbolically linking /home/nihal/amr_ws/build/ekf_slam/resource/ekf_slam -> /home/nihal/amr_ws/install/ekf_slam/share/ament_index/resource_index/packages
+[0.968s] symbolically linking /home/nihal/amr_ws/build/ekf_slam/package.xml -> /home/nihal/amr_ws/install/ekf_slam/share/ekf_slam
+[0.986s] Invoked command in '/home/nihal/amr_ws/build/ekf_slam' returned '0': PYTHONPATH=/home/nihal/amr_ws/build/ekf_slam/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/ekf_slam/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/ekf_slam/build --no-deps symlink_data

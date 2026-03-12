@@ -1,0 +1,23 @@
+[0.931s] Invoking command in '/home/nihal/amr_ws/src/amr_navigation': PYTHONPATH=/home/nihal/amr_ws/build/amr_navigation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/amr_navigation build --build-base /home/nihal/amr_ws/build/amr_navigation/build install --record /home/nihal/amr_ws/build/amr_navigation/install.log --single-version-externally-managed install_data
+[1.097s] running egg_info
+[1.098s] writing ../../build/amr_navigation/amr_navigation.egg-info/PKG-INFO
+[1.098s] writing dependency_links to ../../build/amr_navigation/amr_navigation.egg-info/dependency_links.txt
+[1.099s] writing entry points to ../../build/amr_navigation/amr_navigation.egg-info/entry_points.txt
+[1.100s] writing requirements to ../../build/amr_navigation/amr_navigation.egg-info/requires.txt
+[1.100s] writing top-level names to ../../build/amr_navigation/amr_navigation.egg-info/top_level.txt
+[1.101s] reading manifest file '../../build/amr_navigation/amr_navigation.egg-info/SOURCES.txt'
+[1.102s] writing manifest file '../../build/amr_navigation/amr_navigation.egg-info/SOURCES.txt'
+[1.102s] running build
+[1.102s] running build_py
+[1.102s] running install
+[1.102s] running install_lib
+[1.103s] running install_data
+[1.103s] running install_egg_info
+[1.105s] removing '/home/nihal/amr_ws/install/amr_navigation/lib/python3.10/site-packages/amr_navigation-0.0.0-py3.10.egg-info' (and everything under it)
+[1.105s] Copying ../../build/amr_navigation/amr_navigation.egg-info to /home/nihal/amr_ws/install/amr_navigation/lib/python3.10/site-packages/amr_navigation-0.0.0-py3.10.egg-info
+[1.105s] running install_scripts
+[1.121s] Installing dwa_controller script to /home/nihal/amr_ws/install/amr_navigation/lib/amr_navigation
+[1.121s] Installing global_planner_node script to /home/nihal/amr_ws/install/amr_navigation/lib/amr_navigation
+[1.121s] Installing pure_pursuit_controller script to /home/nihal/amr_ws/install/amr_navigation/lib/amr_navigation
+[1.122s] writing list of installed files to '/home/nihal/amr_ws/build/amr_navigation/install.log'
+[1.170s] Invoked command in '/home/nihal/amr_ws/src/amr_navigation' returned '0': PYTHONPATH=/home/nihal/amr_ws/build/amr_navigation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/amr_navigation build --build-base /home/nihal/amr_ws/build/amr_navigation/build install --record /home/nihal/amr_ws/build/amr_navigation/install.log --single-version-externally-managed install_data

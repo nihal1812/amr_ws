@@ -1,0 +1,20 @@
+[0.400s] Invoking command in '/home/nihal/amr_ws/build/amr_map_tools': PYTHONPATH=/home/nihal/amr_ws/build/amr_map_tools/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/amr_map_tools/build --no-deps symlink_data --force
+[0.553s] running develop
+[0.653s] running egg_info
+[0.653s] writing amr_map_tools.egg-info/PKG-INFO
+[0.653s] writing dependency_links to amr_map_tools.egg-info/dependency_links.txt
+[0.653s] writing entry points to amr_map_tools.egg-info/entry_points.txt
+[0.653s] writing requirements to amr_map_tools.egg-info/requires.txt
+[0.653s] writing top-level names to amr_map_tools.egg-info/top_level.txt
+[0.655s] reading manifest file 'amr_map_tools.egg-info/SOURCES.txt'
+[0.655s] writing manifest file 'amr_map_tools.egg-info/SOURCES.txt'
+[0.657s] running build_ext
+[0.657s] Creating /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr-map-tools.egg-link (link to .)
+[0.657s] Installing map_loader_node script to /home/nihal/amr_ws/install/amr_map_tools/lib/amr_map_tools
+[0.657s] Installing map_saver_node script to /home/nihal/amr_ws/install/amr_map_tools/lib/amr_map_tools
+[0.657s] 
+[0.657s] Installed /home/nihal/amr_ws/build/amr_map_tools
+[0.657s] running symlink_data
+[0.659s] symbolically linking /home/nihal/amr_ws/build/amr_map_tools/resource/amr_map_tools -> /home/nihal/amr_ws/install/amr_map_tools/share/ament_index/resource_index/packages
+[0.659s] symbolically linking /home/nihal/amr_ws/build/amr_map_tools/package.xml -> /home/nihal/amr_ws/install/amr_map_tools/share/amr_map_tools
+[0.674s] Invoked command in '/home/nihal/amr_ws/build/amr_map_tools' returned '0': PYTHONPATH=/home/nihal/amr_ws/build/amr_map_tools/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/amr_map_tools/build --no-deps symlink_data --force

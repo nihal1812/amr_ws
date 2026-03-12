@@ -1,0 +1,30 @@
+running develop
+Removing /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr-map-tools.egg-link (link to .)
+running egg_info
+writing ../../build/amr_map_tools/amr_map_tools.egg-info/PKG-INFO
+writing dependency_links to ../../build/amr_map_tools/amr_map_tools.egg-info/dependency_links.txt
+writing entry points to ../../build/amr_map_tools/amr_map_tools.egg-info/entry_points.txt
+writing requirements to ../../build/amr_map_tools/amr_map_tools.egg-info/requires.txt
+writing top-level names to ../../build/amr_map_tools/amr_map_tools.egg-info/top_level.txt
+reading manifest file '../../build/amr_map_tools/amr_map_tools.egg-info/SOURCES.txt'
+writing manifest file '../../build/amr_map_tools/amr_map_tools.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+creating /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools
+copying /home/nihal/amr_ws/build/amr_map_tools/build/lib/amr_map_tools/map_saver_node.py -> /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools
+copying /home/nihal/amr_ws/build/amr_map_tools/build/lib/amr_map_tools/__init__.py -> /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools
+copying /home/nihal/amr_ws/build/amr_map_tools/build/lib/amr_map_tools/map_loader_node.py -> /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools
+byte-compiling /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools/map_saver_node.py to map_saver_node.cpython-310.pyc
+byte-compiling /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools/map_loader_node.py to map_loader_node.cpython-310.pyc
+running install_data
+copying resource/amr_map_tools -> /home/nihal/amr_ws/install/amr_map_tools/share/ament_index/resource_index/packages
+copying package.xml -> /home/nihal/amr_ws/install/amr_map_tools/share/amr_map_tools
+running install_egg_info
+Copying ../../build/amr_map_tools/amr_map_tools.egg-info to /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools-0.0.0-py3.10.egg-info
+running install_scripts
+Installing map_loader_node script to /home/nihal/amr_ws/install/amr_map_tools/lib/amr_map_tools
+Installing map_saver_node script to /home/nihal/amr_ws/install/amr_map_tools/lib/amr_map_tools
+writing list of installed files to '/home/nihal/amr_ws/build/amr_map_tools/install.log'

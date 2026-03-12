@@ -1,0 +1,20 @@
+[0.431s] Invoking command in '/home/nihal/amr_ws/build/amr_navigation': PYTHONPATH=/home/nihal/amr_ws/build/amr_navigation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/amr_navigation/build --no-deps symlink_data --force
+[0.610s] running develop
+[0.718s] running egg_info
+[0.718s] writing amr_navigation.egg-info/PKG-INFO
+[0.719s] writing dependency_links to amr_navigation.egg-info/dependency_links.txt
+[0.719s] writing entry points to amr_navigation.egg-info/entry_points.txt
+[0.720s] writing requirements to amr_navigation.egg-info/requires.txt
+[0.720s] writing top-level names to amr_navigation.egg-info/top_level.txt
+[0.721s] reading manifest file 'amr_navigation.egg-info/SOURCES.txt'
+[0.722s] writing manifest file 'amr_navigation.egg-info/SOURCES.txt'
+[0.723s] running build_ext
+[0.723s] Creating /home/nihal/amr_ws/install/amr_navigation/lib/python3.10/site-packages/amr-navigation.egg-link (link to .)
+[0.724s] Installing global_planner_node script to /home/nihal/amr_ws/install/amr_navigation/lib/amr_navigation
+[0.725s] Installing pure_pursuit_controller script to /home/nihal/amr_ws/install/amr_navigation/lib/amr_navigation
+[0.725s] 
+[0.725s] Installed /home/nihal/amr_ws/build/amr_navigation
+[0.725s] running symlink_data
+[0.726s] symbolically linking /home/nihal/amr_ws/build/amr_navigation/resource/amr_navigation -> /home/nihal/amr_ws/install/amr_navigation/share/ament_index/resource_index/packages
+[0.726s] symbolically linking /home/nihal/amr_ws/build/amr_navigation/package.xml -> /home/nihal/amr_ws/install/amr_navigation/share/amr_navigation
+[0.745s] Invoked command in '/home/nihal/amr_ws/build/amr_navigation' returned '0': PYTHONPATH=/home/nihal/amr_ws/build/amr_navigation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/amr_navigation/build --no-deps symlink_data --force

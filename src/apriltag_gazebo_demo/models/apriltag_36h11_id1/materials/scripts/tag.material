@@ -1,0 +1,15 @@
+material AprilTag/Tag0
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture tag.png
+        filtering anisotropic
+        max_anisotropy 16
+      }
+    }
+  }
+}

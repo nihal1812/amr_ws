@@ -1,0 +1,39 @@
+[0.375s] Invoking command in '/home/nihal/amr_ws/src/ekf_slam_ros': PYTHONPATH=/home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/ekf_slam_ros build --build-base /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/build install --record /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/install.log --single-version-externally-managed install_data
+[0.498s] running egg_info
+[0.500s] creating build/ekf_slam_ros/ekf_slam_ros.egg-info
+[0.500s] writing build/ekf_slam_ros/ekf_slam_ros.egg-info/PKG-INFO
+[0.500s] writing dependency_links to build/ekf_slam_ros/ekf_slam_ros.egg-info/dependency_links.txt
+[0.500s] writing entry points to build/ekf_slam_ros/ekf_slam_ros.egg-info/entry_points.txt
+[0.501s] writing requirements to build/ekf_slam_ros/ekf_slam_ros.egg-info/requires.txt
+[0.501s] writing top-level names to build/ekf_slam_ros/ekf_slam_ros.egg-info/top_level.txt
+[0.502s] writing manifest file 'build/ekf_slam_ros/ekf_slam_ros.egg-info/SOURCES.txt'
+[0.506s] reading manifest file 'build/ekf_slam_ros/ekf_slam_ros.egg-info/SOURCES.txt'
+[0.507s] writing manifest file 'build/ekf_slam_ros/ekf_slam_ros.egg-info/SOURCES.txt'
+[0.508s] running build
+[0.508s] running build_py
+[0.510s] creating /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/build
+[0.510s] creating /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/build/lib
+[0.511s] creating /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/build/lib/ekf_slam_ros
+[0.511s] copying ekf_slam_ros/slam_node.py -> /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/build/lib/ekf_slam_ros
+[0.511s] copying ekf_slam_ros/__init__.py -> /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/build/lib/ekf_slam_ros
+[0.511s] running install
+[0.511s] running install_lib
+[0.513s] creating /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros
+[0.513s] copying /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/build/lib/ekf_slam_ros/slam_node.py -> /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros
+[0.513s] copying /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/build/lib/ekf_slam_ros/__init__.py -> /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros
+[0.513s] byte-compiling /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros/slam_node.py to slam_node.cpython-310.pyc
+[0.513s] /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros/slam_node.py:12: SyntaxWarning: 'float' object is not callable; perhaps you missed a comma?
+[0.513s]   return math.atan2(2.0 * (q.w * q.z + q.x * q.y), 1.0 - 2.0 (q.y * q.y + q.z * q.z))
+[0.514s] byte-compiling /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros/__init__.py to __init__.cpython-310.pyc
+[0.514s] running install_data
+[0.514s] creating /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/share/ament_index
+[0.514s] creating /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/share/ament_index/resource_index
+[0.514s] creating /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/share/ament_index/resource_index/packages
+[0.514s] copying resource/ekf_slam_ros -> /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/share/ament_index/resource_index/packages
+[0.514s] copying package.xml -> /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/share/ekf_slam_ros
+[0.514s] running install_egg_info
+[0.515s] Copying build/ekf_slam_ros/ekf_slam_ros.egg-info to /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros-0.0.0-py3.10.egg-info
+[0.516s] running install_scripts
+[0.527s] Installing slam_plumbing_node script to /home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/ekf_slam_ros
+[0.527s] writing list of installed files to '/home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/install.log'
+[0.544s] Invoked command in '/home/nihal/amr_ws/src/ekf_slam_ros' returned '0': PYTHONPATH=/home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/ekf_slam_ros build --build-base /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/build install --record /home/nihal/amr_ws/src/ekf_slam_ros/build/ekf_slam_ros/install.log --single-version-externally-managed install_data

@@ -1,0 +1,35 @@
+[0.784s] Invoking command in '/home/nihal/amr_ws/build/amr_map_tools': PYTHONPATH=/home/nihal/amr_ws/build/amr_map_tools/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/nihal/amr_ws/build/amr_map_tools/build
+[0.952s] running develop
+[1.053s] Removing /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr-map-tools.egg-link (link to .)
+[1.149s] Invoked command in '/home/nihal/amr_ws/build/amr_map_tools' returned '0': PYTHONPATH=/home/nihal/amr_ws/build/amr_map_tools/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/nihal/amr_ws/build/amr_map_tools/build
+[1.150s] Invoking command in '/home/nihal/amr_ws/src/amr_map_tools': PYTHONPATH=/home/nihal/amr_ws/build/amr_map_tools/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/amr_map_tools build --build-base /home/nihal/amr_ws/build/amr_map_tools/build install --record /home/nihal/amr_ws/build/amr_map_tools/install.log --single-version-externally-managed install_data --force
+[1.300s] running egg_info
+[1.300s] writing ../../build/amr_map_tools/amr_map_tools.egg-info/PKG-INFO
+[1.300s] writing dependency_links to ../../build/amr_map_tools/amr_map_tools.egg-info/dependency_links.txt
+[1.300s] writing entry points to ../../build/amr_map_tools/amr_map_tools.egg-info/entry_points.txt
+[1.300s] writing requirements to ../../build/amr_map_tools/amr_map_tools.egg-info/requires.txt
+[1.300s] writing top-level names to ../../build/amr_map_tools/amr_map_tools.egg-info/top_level.txt
+[1.303s] reading manifest file '../../build/amr_map_tools/amr_map_tools.egg-info/SOURCES.txt'
+[1.304s] writing manifest file '../../build/amr_map_tools/amr_map_tools.egg-info/SOURCES.txt'
+[1.304s] running build
+[1.304s] running build_py
+[1.304s] copying amr_map_tools/map_saver_node.py -> /home/nihal/amr_ws/build/amr_map_tools/build/lib/amr_map_tools
+[1.305s] running install
+[1.305s] running install_lib
+[1.305s] creating /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools
+[1.305s] copying /home/nihal/amr_ws/build/amr_map_tools/build/lib/amr_map_tools/map_saver_node.py -> /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools
+[1.305s] copying /home/nihal/amr_ws/build/amr_map_tools/build/lib/amr_map_tools/__init__.py -> /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools
+[1.305s] copying /home/nihal/amr_ws/build/amr_map_tools/build/lib/amr_map_tools/map_loader_node.py -> /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools
+[1.305s] byte-compiling /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools/map_saver_node.py to map_saver_node.cpython-310.pyc
+[1.306s] byte-compiling /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools/__init__.py to __init__.cpython-310.pyc
+[1.306s] byte-compiling /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools/map_loader_node.py to map_loader_node.cpython-310.pyc
+[1.310s] running install_data
+[1.310s] copying resource/amr_map_tools -> /home/nihal/amr_ws/install/amr_map_tools/share/ament_index/resource_index/packages
+[1.311s] copying package.xml -> /home/nihal/amr_ws/install/amr_map_tools/share/amr_map_tools
+[1.311s] running install_egg_info
+[1.311s] Copying ../../build/amr_map_tools/amr_map_tools.egg-info to /home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages/amr_map_tools-0.0.0-py3.10.egg-info
+[1.311s] running install_scripts
+[1.323s] Installing map_loader_node script to /home/nihal/amr_ws/install/amr_map_tools/lib/amr_map_tools
+[1.324s] Installing map_saver_node script to /home/nihal/amr_ws/install/amr_map_tools/lib/amr_map_tools
+[1.324s] writing list of installed files to '/home/nihal/amr_ws/build/amr_map_tools/install.log'
+[1.339s] Invoked command in '/home/nihal/amr_ws/src/amr_map_tools' returned '0': PYTHONPATH=/home/nihal/amr_ws/build/amr_map_tools/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_map_tools/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/amr_map_tools build --build-base /home/nihal/amr_ws/build/amr_map_tools/build install --record /home/nihal/amr_ws/build/amr_map_tools/install.log --single-version-externally-managed install_data --force

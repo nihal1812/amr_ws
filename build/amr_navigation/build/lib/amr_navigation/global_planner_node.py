@@ -1,0 +1,261 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import math
+import heapq
+from typing import Optional, List, Tuple, Dict
+
+import rclpy
+from rclpy.node import Node
+from nav_msgs.msg import OccupancyGrid, Path
+from geometry_msgs.msg import PoseStamped
+
+from .grid_utils import world_to_grid, grid_to_world
+
+
+Cell = Tuple[int, int]
+
+
+class GlobalPlanner(Node):
+    """
+    A* global planner on OccupancyGrid.
+
+    Inputs:
+      - /map (nav_msgs/OccupancyGrid)
+
+    Outputs:
+      - /global_path (nav_msgs/Path)
+
+    For now, start pose is a fixed (start_x, start_y) parameter (map frame),
+    goal pose is (goal_x, goal_y) parameter (map frame).
+    Later we replace start with TF/odom pose and goal with a service/action.
+    """
+
+    def __init__(self):
+        super().__init__("amr_global_planner")
+
+        # --- Parameters ---
+        self.declare_parameter("map_topic", "/map")
+        self.declare_parameter("path_topic", "/global_path")
+
+        # Occupancy threshold: cells >= threshold are treated as obstacles (0..100)
+        self.declare_parameter("occ_threshold", 50)
+
+        # Unknown handling: if false, unknown (-1) treated as obstacle; if true, treated as free
+        self.declare_parameter("treat_unknown_as_free", False)
+
+        # Test start/goal in MAP frame (meters)
+        self.declare_parameter("start_x", 0.0)
+        self.declare_parameter("start_y", 0.0)
+        self.declare_parameter("goal_x", 1.0)
+        self.declare_parameter("goal_y", 1.0)
+
+        # Planning frequency (seconds)
+        self.declare_parameter("plan_period", 1.0)
+
+        # Safety cap for expansions (prevents runaway on huge maps)
+        self.declare_parameter("max_expansions", 300000)
+
+        self.map_msg: Optional[OccupancyGrid] = None
+        self._last_path_len = 0
+        self._last_warn = ""
+
+        map_topic = self.get_parameter("map_topic").value
+        path_topic = self.get_parameter("path_topic").value
+        plan_period = float(self.get_parameter("plan_period").value)
+
+        self.create_subscription(OccupancyGrid, map_topic, self._map_cb, 10)
+        self.path_pub = self.create_publisher(Path, path_topic, 10)
+
+        self.timer = self.create_timer(plan_period, self._tick)
+
+        self.get_logger().info(f"Subscribed map: {map_topic}")
+        self.get_logger().info(f"Publishing path: {path_topic}")
+
+    # ---------------- ROS callbacks ----------------
+    def _map_cb(self, msg: OccupancyGrid):
+        self.map_msg = msg
+
+    def _tick(self):
+        if self.map_msg is None:
+            return
+
+        sx = float(self.get_parameter("start_x").value)
+        sy = float(self.get_parameter("start_y").value)
+        gx = float(self.get_parameter("goal_x").value)
+        gy = float(self.get_parameter("goal_y").value)
+
+        cells = self.plan_astar_world(sx, sy, gx, gy)
+        if not cells:
+            # Avoid spamming the same warning every tick
+            if self._last_warn != "no_path":
+                self.get_logger().warn("No path found (or start/goal not free).")
+                self._last_warn = "no_path"
+            return
+
+        self._last_warn = ""
+        msg = self.cells_to_path(cells)
+        self.path_pub.publish(msg)
+
+        if len(cells) != self._last_path_len:
+            self.get_logger().info(f"Published path with {len(cells)} poses.")
+            self._last_path_len = len(cells)
+
+    # ---------------- Planning ----------------
+    def plan_astar_world(self, sx: float, sy: float, gx: float, gy: float) -> List[Cell]:
+        m = self.map_msg
+        assert m is not None
+
+        res = float(m.info.resolution)
+        ox = float(m.info.origin.position.x)
+        oy = float(m.info.origin.position.y)
+        w = int(m.info.width)
+        h = int(m.info.height)
+
+        start = world_to_grid(sx, sy, ox, oy, res)
+        goal = world_to_grid(gx, gy, ox, oy, res)
+
+        return self.astar(start, goal, w, h, m.data)
+
+    def astar(self, start: Cell, goal: Cell, w: int, h: int, data) -> List[Cell]:
+        if not self.is_free(start[0], start[1], w, h, data):
+            if self._last_warn != "start_blocked":
+                self.get_logger().warn("Start cell is not free.")
+                self._last_warn = "start_blocked"
+            return []
+        if not self.is_free(goal[0], goal[1], w, h, data):
+            if self._last_warn != "goal_blocked":
+                self.get_logger().warn("Goal cell is not free.")
+                self._last_warn = "goal_blocked"
+            return []
+
+        max_expansions = int(self.get_parameter("max_expansions").value)
+
+        open_heap: List[Tuple[float, float, Cell]] = []  # (f, h, cell)
+        came_from: Dict[Cell, Cell] = {}
+        g_score: Dict[Cell, float] = {start: 0.0}
+        closed = set()
+
+        h0 = self.heuristic_octile(start, goal)
+        heapq.heappush(open_heap, (h0, h0, start))
+
+        expansions = 0
+
+        while open_heap:
+            _, _, current = heapq.heappop(open_heap)
+
+            if current in closed:
+                continue
+            closed.add(current)
+
+            if current == goal:
+                return self.reconstruct_path(came_from, current)
+
+            expansions += 1
+            if expansions > max_expansions:
+                if self._last_warn != "expansion_limit":
+                    self.get_logger().warn("A*: expansion limit reached, aborting.")
+                    self._last_warn = "expansion_limit"
+                return []
+
+            cx, cy = current
+            current_g = g_score[current]
+
+            for nx, ny in self.neighbors8(cx, cy):
+                if not self.is_free(nx, ny, w, h, data):
+                    continue
+
+                neighbor: Cell = (nx, ny)
+                if neighbor in closed:
+                    continue
+
+                tentative_g = current_g + self.step_cost(current, neighbor)
+
+                if neighbor not in g_score or tentative_g < g_score[neighbor]:
+                    came_from[neighbor] = current
+                    g_score[neighbor] = tentative_g
+                    hval = self.heuristic_octile(neighbor, goal)
+                    fval = tentative_g + hval
+                    heapq.heappush(open_heap, (fval, hval, neighbor))
+
+        return []
+
+    # ---------------- Grid helpers ----------------
+    def is_free(self, i: int, j: int, w: int, h: int, data) -> bool:
+        if i < 0 or j < 0 or i >= w or j >= h:
+            return False
+
+        v = int(data[j * w + i])
+
+        # Unknown
+        if v < 0:
+            return bool(self.get_parameter("treat_unknown_as_free").value)
+
+        return v < int(self.get_parameter("occ_threshold").value)
+
+    def neighbors8(self, i: int, j: int):
+        # 8-connected neighbors
+        for di, dj in [(-1, 0), (1, 0), (0, -1), (0, 1),
+                       (-1, -1), (-1, 1), (1, -1), (1, 1)]:
+            yield i + di, j + dj
+
+    def heuristic_octile(self, a: Cell, b: Cell) -> float:
+        ax, ay = a
+        bx, by = b
+        dx = abs(ax - bx)
+        dy = abs(ay - by)
+        return (dx + dy) + (math.sqrt(2.0) - 2.0) * min(dx, dy)
+
+    def step_cost(self, a: Cell, b: Cell) -> float:
+        ax, ay = a
+        bx, by = b
+        return math.sqrt(2.0) if (ax != bx and ay != by) else 1.0
+
+    def reconstruct_path(self, came_from: Dict[Cell, Cell], current: Cell) -> List[Cell]:
+        path = [current]
+        while current in came_from:
+            current = came_from[current]
+            path.append(current)
+        path.reverse()
+        return path
+
+    # ---------------- Publishing helpers ----------------
+    def cells_to_path(self, cells: List[Cell]) -> Path:
+        m = self.map_msg
+        assert m is not None
+
+        res = float(m.info.resolution)
+        ox = float(m.info.origin.position.x)
+        oy = float(m.info.origin.position.y)
+
+        path = Path()
+        path.header.frame_id = "map"
+        path.header.stamp = self.get_clock().now().to_msg()
+
+        for (i, j) in cells:
+            x, y = grid_to_world(i, j, ox, oy, res)
+            ps = PoseStamped()
+            ps.header = path.header
+            ps.pose.position.x = float(x)
+            ps.pose.position.y = float(y)
+            ps.pose.orientation.w = 1.0
+            path.poses.append(ps)
+
+        return path
+
+
+def main():
+    rclpy.init()
+    node = GlobalPlanner()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        node.destroy_node()
+        if rclpy.ok():
+            rclpy.shutdown()
+
+
+if __name__ == "__main__":
+    main()

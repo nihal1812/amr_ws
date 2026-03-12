@@ -1,0 +1,3 @@
+[console_scripts]
+slam_plumbing_node = ekf_slam_ros.slam_node:main
+

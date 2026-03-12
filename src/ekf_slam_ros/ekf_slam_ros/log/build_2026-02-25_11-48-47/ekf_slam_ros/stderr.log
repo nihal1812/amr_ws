@@ -1,0 +1,2 @@
+/home/nihal/amr_ws/src/ekf_slam_ros/install/ekf_slam_ros/lib/python3.10/site-packages/ekf_slam_ros/slam_node.py:12: SyntaxWarning: 'float' object is not callable; perhaps you missed a comma?
+  return math.atan2(2.0 * (q.w * q.z + q.x * q.y), 1.0 - 2.0 (q.y * q.y + q.z * q.z))

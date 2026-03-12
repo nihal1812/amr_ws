@@ -1,0 +1,17 @@
+[0.426s] Invoking command in '/home/nihal/amr_ws/build/amr_navigation': PYTHONPATH=/home/nihal/amr_ws/build/amr_navigation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/amr_navigation/build --no-deps symlink_data
+[0.600s] running develop
+[0.733s] running egg_info
+[0.734s] writing amr_navigation.egg-info/PKG-INFO
+[0.734s] writing dependency_links to amr_navigation.egg-info/dependency_links.txt
+[0.734s] writing entry points to amr_navigation.egg-info/entry_points.txt
+[0.734s] writing requirements to amr_navigation.egg-info/requires.txt
+[0.735s] writing top-level names to amr_navigation.egg-info/top_level.txt
+[0.743s] reading manifest file 'amr_navigation.egg-info/SOURCES.txt'
+[0.744s] writing manifest file 'amr_navigation.egg-info/SOURCES.txt'
+[0.744s] running build_ext
+[0.744s] Creating /home/nihal/amr_ws/install/amr_navigation/lib/python3.10/site-packages/amr-navigation.egg-link (link to .)
+[0.744s] Installing global_planner_node script to /home/nihal/amr_ws/install/amr_navigation/lib/amr_navigation
+[0.744s] 
+[0.744s] Installed /home/nihal/amr_ws/build/amr_navigation
+[0.744s] running symlink_data
+[0.788s] Invoked command in '/home/nihal/amr_ws/build/amr_navigation' returned '0': PYTHONPATH=/home/nihal/amr_ws/build/amr_navigation/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nihal/amr_ws/install/amr_navigation/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nihal/amr_ws/build/amr_navigation/build --no-deps symlink_data
