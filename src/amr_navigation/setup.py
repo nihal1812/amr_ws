@@ -27,6 +27,7 @@ setup(
                 'global_planner_node = amr_navigation.global_planner_node:main',
                 'pure_pursuit_controller = amr_navigation.pure_pursuit_controller:main',
                 'dwa_controller = amr_navigation.dwa_controller:main',
+                'amr_controller = amr_navigation.amr_controller:main',
         ],
     },
 )
