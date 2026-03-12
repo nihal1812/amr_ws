@@ -17,6 +17,7 @@ Cell = Tuple[int, int]
 
 
 class GlobalPlanner(Node):
+<<<<<<< HEAD
     """
     A* global planner on OccupancyGrid.
 
@@ -29,6 +30,8 @@ class GlobalPlanner(Node):
       - /global_path (Path, map frame)
     """
 
+=======
+>>>>>>> e5ac046 (new 1)
     def __init__(self):
         super().__init__("amr_global_planner")
 
@@ -40,14 +43,23 @@ class GlobalPlanner(Node):
 
         # Occupancy handling
         self.declare_parameter("occ_threshold", 50)
+<<<<<<< HEAD
         self.declare_parameter("treat_unknown_as_free", False)
+=======
+        self.declare_parameter("treat_unknown_as_free", True)
+>>>>>>> e5ac046 (new 1)
 
         # Planning
         self.declare_parameter("plan_period", 0.5)
         self.declare_parameter("max_expansions", 300000)
 
+<<<<<<< HEAD
         # Optional safety inflation in cells
         self.declare_parameter("inflate_cells", 3)
+=======
+        # Safety inflation in cells
+        self.declare_parameter("inflate_cells", 1)
+>>>>>>> e5ac046 (new 1)
 
         self.map_msg: Optional[OccupancyGrid] = None
         self.slam_pose: Optional[PoseStamped] = None
@@ -91,7 +103,10 @@ class GlobalPlanner(Node):
         if self.map_msg is None or self.slam_pose is None or self.goal_pose is None:
             return
 
+<<<<<<< HEAD
         # Require consistent map frame
+=======
+>>>>>>> e5ac046 (new 1)
         if self.goal_pose.header.frame_id and self.goal_pose.header.frame_id != "map":
             if self._last_warn != "goal_not_map":
                 self.get_logger().warn(
@@ -134,8 +149,18 @@ class GlobalPlanner(Node):
         start = world_to_grid(sx, sy, ox, oy, res)
         goal = world_to_grid(gx, gy, ox, oy, res)
 
+<<<<<<< HEAD
         data = self.inflate_map_if_needed(w, h, m.data)
 
+=======
+        if start is None or goal is None:
+            if self._last_warn != "start_or_goal_oob":
+                self.get_logger().warn("Start or goal is outside map bounds.")
+                self._last_warn = "start_or_goal_oob"
+            return []
+
+        data = self.inflate_map_if_needed(w, h, m.data)
+>>>>>>> e5ac046 (new 1)
         return self.astar(start, goal, w, h, data)
 
     def inflate_map_if_needed(self, w: int, h: int, data) -> List[int]:
@@ -169,19 +194,67 @@ class GlobalPlanner(Node):
                         inflated[nj * w + ni] = 100
 
         return inflated
+<<<<<<< HEAD
+=======
+
+    def nearest_free_cell(self, cell: Cell, w: int, h: int, data, max_radius: int = 8) -> Optional[Cell]:
+        ci, cj = cell
+
+        if self.is_free(ci, cj, w, h, data):
+            return cell
+
+        for r in range(1, max_radius + 1):
+            for dj in range(-r, r + 1):
+                for di in range(-r, r + 1):
+                    ni = ci + di
+                    nj = cj + dj
+
+                    if abs(di) != r and abs(dj) != r:
+                        continue
+
+                    if self.is_free(ni, nj, w, h, data):
+                        return (ni, nj)
+
+        return None
+>>>>>>> e5ac046 (new 1)
 
     def astar(self, start: Cell, goal: Cell, w: int, h: int, data) -> List[Cell]:
-        if not self.is_free(start[0], start[1], w, h, data):
+        start_free = self.nearest_free_cell(start, w, h, data, max_radius=8)
+        if start_free is None:
             if self._last_warn != "start_blocked":
-                self.get_logger().warn("Start cell is not free.")
+                self.get_logger().warn("Start cell is not free, and no nearby free cell was found.")
                 self._last_warn = "start_blocked"
             return []
+<<<<<<< HEAD
 
         if not self.is_free(goal[0], goal[1], w, h, data):
+=======
+        if start_free != start:
+            self.get_logger().warn(
+                f"Start cell blocked. Using nearby free cell {start_free} instead of {start}."
+            )
+        start = start_free
+
+        goal_free = self.nearest_free_cell(goal, w, h, data, max_radius=20)
+        if goal_free is None:
+>>>>>>> e5ac046 (new 1)
             if self._last_warn != "goal_blocked":
-                self.get_logger().warn("Goal cell is not free.")
+                self.get_logger().warn(
+                    f"Goal cell {goal} is not free, and no nearby free cell was found within radius 20."
+                )
                 self._last_warn = "goal_blocked"
             return []
+        if goal_free != goal:
+            self.get_logger().warn(
+                f"Goal cell blocked. Using nearby free cell {goal_free} instead of {goal}."
+            )
+        goal = goal_free
+
+        if start == goal:
+            self.get_logger().warn(
+                f"Start and goal collapse to the same free cell {start}. Goal is too close or blocked."
+            )
+            return [start]
 
         max_expansions = int(self.get_parameter("max_expansions").value)
 
@@ -247,13 +320,24 @@ class GlobalPlanner(Node):
         return v < int(self.get_parameter("occ_threshold").value)
 
     def neighbors8_no_corner_cut(self, i: int, j: int, w: int, h: int, data):
+<<<<<<< HEAD
         dirs = [(-1, 0), (1, 0), (0, -1), (0, 1),
                 (-1, -1), (-1, 1), (1, -1), (1, 1)]
+=======
+        dirs = [
+            (-1, 0), (1, 0), (0, -1), (0, 1),
+            (-1, -1), (-1, 1), (1, -1), (1, 1)
+        ]
+
+>>>>>>> e5ac046 (new 1)
         for di, dj in dirs:
             ni, nj = i + di, j + dj
 
             if di != 0 and dj != 0:
+<<<<<<< HEAD
                 # block diagonal corner cutting
+=======
+>>>>>>> e5ac046 (new 1)
                 if not self.is_free(i + di, j, w, h, data):
                     continue
                 if not self.is_free(i, j + dj, w, h, data):
