@@ -35,6 +35,7 @@ class Pose2D:
 
 
 class DWAController(Node):
+<<<<<<< HEAD
     """
     DWA local planner + controller (outputs cmd_vel)
 
@@ -49,6 +50,8 @@ class DWAController(Node):
       - This removes the old map-vs-odom mismatch.
     """
 
+=======
+>>>>>>> e5ac046 (new 1)
     def __init__(self):
         super().__init__("dwa_controller")
 
@@ -61,8 +64,9 @@ class DWAController(Node):
         self.declare_parameter("goal_topic", "/goal_pose")
 
         # Robot limits
-        self.declare_parameter("v_max", 0.35)
+        self.declare_parameter("v_max", 0.30)
         self.declare_parameter("v_min", 0.0)
+<<<<<<< HEAD
         self.declare_parameter("w_max", 1.5)
         self.declare_parameter("a_v", 0.8)
         self.declare_parameter("a_w", 2.5)
@@ -94,6 +98,44 @@ class DWAController(Node):
         # Recovery / behavior
         self.declare_parameter("rotate_in_place_speed", 0.35)
         self.declare_parameter("min_forward_speed", 0.03)
+=======
+        self.declare_parameter("w_max", 1.2)
+        self.declare_parameter("a_v", 1.0)
+        self.declare_parameter("a_w", 2.5)
+
+        # Sampling
+        self.declare_parameter("num_v_samples", 10)
+        self.declare_parameter("num_w_samples", 21)
+
+        # Simulation
+        self.declare_parameter("sim_dt", 0.05)
+        self.declare_parameter("sim_horizon", 1.2)
+
+        # Robot footprint
+        self.declare_parameter("robot_radius", 0.16)
+        self.declare_parameter("obstacle_margin", 0.03)
+
+        # Costs
+        self.declare_parameter("w_path", 1.0)
+        self.declare_parameter("w_goal", 0.8)
+        self.declare_parameter("w_obs", 1.8)
+        self.declare_parameter("w_smooth", 0.12)
+        self.declare_parameter("w_speed", 0.6)
+        self.declare_parameter("w_heading", 0.8)
+
+        # Guidance
+        self.declare_parameter("lookahead_along_path", 0.7)
+        self.declare_parameter("goal_tolerance", 0.18)
+
+        # Heading recovery
+        self.declare_parameter("heading_rotate_threshold", 0.6)   # ~34 deg
+        self.declare_parameter("heading_forward_threshold", 0.35) # ~20 deg
+        self.declare_parameter("rotate_gain", 1.2)
+
+        # Recovery / behavior
+        self.declare_parameter("rotate_in_place_speed", 0.30)
+        self.declare_parameter("min_forward_speed", 0.04)
+>>>>>>> e5ac046 (new 1)
 
         # Control loop
         self.declare_parameter("control_period", 0.05)
@@ -106,6 +148,7 @@ class DWAController(Node):
 
         self._path_pts: List[Tuple[float, float]] = []
         self._closest_idx = 0
+        self._last_stop_reason = ""
 
         self.create_subscription(Path, self.get_parameter("path_topic").value, self._path_cb, 10)
         self.create_subscription(PoseStamped, self.get_parameter("slam_pose_topic").value, self._slam_pose_cb, 20)
@@ -120,10 +163,14 @@ class DWAController(Node):
 
     # ---------------- Callbacks ----------------
     def _path_cb(self, msg: Path):
-        if len(msg.poses) < 2:
+        n = len(msg.poses)
+        self.get_logger().info(f"Received global path with {n} poses.")
+
+        if n == 0:
             self.path = None
             self._path_pts = []
             return
+
         self.path = msg
         self._path_pts = [(p.pose.position.x, p.pose.position.y) for p in msg.poses]
         self._closest_idx = 0
@@ -146,35 +193,89 @@ class DWAController(Node):
             return
 
         if not self._path_pts:
+<<<<<<< HEAD
             self.cmd_pub.publish(Twist())
+=======
+            self._publish_stop_once("no_path")
+>>>>>>> e5ac046 (new 1)
             return
 
         pose = self.get_pose_from_slam(self.slam_pose)
 
+<<<<<<< HEAD
+=======
+        if len(self._path_pts) == 1:
+            px, py = self._path_pts[0]
+            d = math.hypot(px - pose.x, py - pose.y)
+            if d <= float(self.get_parameter("goal_tolerance").value):
+                self._publish_stop_once("single_pose_near")
+            else:
+                self._publish_stop_once("single_pose_far")
+            return
+
+>>>>>>> e5ac046 (new 1)
         if self.goal_pose is not None:
             gx = float(self.goal_pose.pose.position.x)
             gy = float(self.goal_pose.pose.position.y)
             goal_dist = math.hypot(gx - pose.x, gy - pose.y)
             if goal_dist <= float(self.get_parameter("goal_tolerance").value):
+<<<<<<< HEAD
                 self.cmd_pub.publish(Twist())
+=======
+                self._publish_stop_once("goal_reached")
+>>>>>>> e5ac046 (new 1)
                 return
 
         target = self.pick_target_on_path(pose.x, pose.y)
 
+<<<<<<< HEAD
         v0 = float(self.odom.twist.twist.linear.x)
         w0 = float(self.odom.twist.twist.angular.z)
 
+=======
+        # Rotate first if target is far off to one side
+        heading_err = self.angle_to_target(pose, target)
+        rotate_thresh = float(self.get_parameter("heading_rotate_threshold").value)
+        rotate_gain = float(self.get_parameter("rotate_gain").value)
+        w_max = float(self.get_parameter("w_max").value)
+
+        if abs(heading_err) > rotate_thresh:
+            cmd = Twist()
+            cmd.linear.x = 0.0
+            cmd.angular.z = max(-w_max, min(w_max, rotate_gain * heading_err))
+            self.cmd_pub.publish(cmd)
+            self.get_logger().info(
+                f"Heading error large ({heading_err:.3f} rad). Rotating first: w={cmd.angular.z:.3f}"
+            )
+            self._last_stop_reason = ""
+            return
+
+        v0 = float(self.odom.twist.twist.linear.x)
+        w0 = float(self.odom.twist.twist.angular.z)
+>>>>>>> e5ac046 (new 1)
         obs_pts = self.scan_to_points_robot_frame(self.scan)
 
         v_min, v_max, w_min, w_max = self.dynamic_window(v0, w0)
+        v_samples, w_samples = self.sample_window(v_min, v_max, w_min, w_max)
+
+        # If heading is still moderate, restrict reverse-ish turning behavior by preferring smaller omega
+        forward_thresh = float(self.get_parameter("heading_forward_threshold").value)
 
         best = None
         best_cost = float("inf")
 
+<<<<<<< HEAD
         v_samples, w_samples = self.sample_window(v_min, v_max, w_min, w_max)
 
         for v in v_samples:
             for w in w_samples:
+=======
+        for v in v_samples:
+            for w in w_samples:
+                if abs(heading_err) > forward_thresh and v > 0.0 and abs(w) < 0.05:
+                    continue
+
+>>>>>>> e5ac046 (new 1)
                 traj = self.rollout(pose, v, w)
                 cost = self.evaluate(traj, v, w, target, obs_pts, pose)
                 if cost < best_cost:
@@ -186,6 +287,8 @@ class DWAController(Node):
             cmd.linear.x = 0.0
             cmd.angular.z = float(self.get_parameter("rotate_in_place_speed").value)
             self.cmd_pub.publish(cmd)
+            self.get_logger().warn("No safe DWA command found. Rotating in place.")
+            self._last_stop_reason = ""
             return
 
         cmd = Twist()
@@ -197,6 +300,18 @@ class DWAController(Node):
         )
 
         self.cmd_pub.publish(cmd)
+
+        self.get_logger().info(
+            f"DWA cmd -> v={cmd.linear.x:.3f}, w={cmd.angular.z:.3f}, "
+            f"heading_err={heading_err:.3f}, best_cost={best_cost:.3f}"
+        )
+        self._last_stop_reason = ""
+
+    def _publish_stop_once(self, reason: str):
+        if self._last_stop_reason != reason:
+            self.get_logger().warn(f"DWA stopping: {reason}")
+            self._last_stop_reason = reason
+        self.cmd_pub.publish(Twist())
 
     # ---------------- Pose / target selection ----------------
     def get_pose_from_slam(self, pose_msg: PoseStamped) -> Pose2D:
@@ -229,6 +344,11 @@ class DWAController(Node):
                 best_i = i
         return best_i
 
+    def angle_to_target(self, pose: Pose2D, target: Tuple[float, float]) -> float:
+        tx, ty = target
+        desired = math.atan2(ty - pose.y, tx - pose.x)
+        return wrap(desired - pose.th)
+
     # ---------------- DWA pieces ----------------
     def dynamic_window(self, v0: float, w0: float):
         v_max_abs = float(self.get_parameter("v_max").value)
@@ -250,11 +370,14 @@ class DWAController(Node):
         num_w = max(3, int(self.get_parameter("num_w_samples").value))
         min_forward = float(self.get_parameter("min_forward_speed").value)
 
+<<<<<<< HEAD
         if v_max < v_min:
             v_max = v_min
         if w_max < w_min:
             w_max = w_min
 
+=======
+>>>>>>> e5ac046 (new 1)
         if abs(v_max - v_min) < 1e-6:
             v_samples = [v_min]
         else:
@@ -265,6 +388,7 @@ class DWAController(Node):
         else:
             w_samples = [w_min + (w_max - w_min) * i / (num_w - 1) for i in range(num_w)]
 
+<<<<<<< HEAD
         # Ensure some forward candidates exist at startup
         if v_max > min_forward and all(v < min_forward for v in v_samples):
             v_samples.append(min_forward)
@@ -272,6 +396,12 @@ class DWAController(Node):
         v_samples = sorted(set(float(v) for v in v_samples))
         w_samples = sorted(set(float(w) for w in w_samples))
         return v_samples, w_samples
+=======
+        if v_max > min_forward and all(v < min_forward for v in v_samples):
+            v_samples.append(min_forward)
+
+        return sorted(set(v_samples)), sorted(set(w_samples))
+>>>>>>> e5ac046 (new 1)
 
     def rollout(self, pose: Pose2D, v: float, w: float) -> List[Pose2D]:
         sim_dt = float(self.get_parameter("sim_dt").value)
@@ -301,6 +431,7 @@ class DWAController(Node):
 
         d_goal = math.hypot(end.x - tx, end.y - ty)
         d_path = self.distance_to_path(end.x, end.y)
+        heading_err = abs(wrap(math.atan2(ty - end.y, tx - end.x) - end.th))
 
         clearance = self.min_clearance_along_traj(traj, obs_pts_robot, current_pose)
         if clearance <= 0.0:
@@ -315,12 +446,20 @@ class DWAController(Node):
         w_obs = float(self.get_parameter("w_obs").value)
         w_smooth = float(self.get_parameter("w_smooth").value)
         w_speed = float(self.get_parameter("w_speed").value)
+<<<<<<< HEAD
+=======
+        w_heading = float(self.get_parameter("w_heading").value)
+>>>>>>> e5ac046 (new 1)
 
         return (
             w_path * d_path
             + w_goal * d_goal
             + w_obs * c_obs
             + w_smooth * smooth
+<<<<<<< HEAD
+=======
+            + w_heading * heading_err
+>>>>>>> e5ac046 (new 1)
             + w_speed * speed_reward
         )
 
@@ -355,12 +494,15 @@ class DWAController(Node):
         obs_pts_robot: List[Tuple[float, float]],
         current_pose: Pose2D,
     ) -> float:
+<<<<<<< HEAD
         """
         Approximate clearance check:
         - obstacles are from the current scan in current robot frame
         - convert each simulated pose into current robot frame
         - measure obstacle distance relative to simulated robot center
         """
+=======
+>>>>>>> e5ac046 (new 1)
         R = float(self.get_parameter("robot_radius").value)
         margin = float(self.get_parameter("obstacle_margin").value)
 
@@ -376,11 +518,17 @@ class DWAController(Node):
 
         for k in sample_idx:
             p = traj[k]
+<<<<<<< HEAD
 
             dx_world = p.x - current_pose.x
             dy_world = p.y - current_pose.y
 
             # transform simulated center into current robot frame
+=======
+            dx_world = p.x - current_pose.x
+            dy_world = p.y - current_pose.y
+
+>>>>>>> e5ac046 (new 1)
             dx_robot = c0 * dx_world - s0 * dy_world
             dy_robot = s0 * dx_world + c0 * dy_world
 
