@@ -240,8 +240,8 @@ def generate_launch_description():
                 ),
                 Node(
                     package="amr_navigation",
-                    executable="dwa_controller",
-                    name="dwa_controller",
+                    executable="amr_controller",
+                    name="amr_controller",
                     output="screen",
                     parameters=[
                         {"use_sim_time": True},
