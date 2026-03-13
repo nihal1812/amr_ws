@@ -8,6 +8,10 @@ slam_plumbing_node:
 
     slam:
       update_period: 0.2
+      fast_rotation_threshold: 1.0
+      skip_map_update_during_fast_rotation: true
+      debug_print_period: 1.0
+      max_scan_odom_dt: 0.10
 
     map:
       resolution: 0.05
@@ -17,28 +21,32 @@ slam_plumbing_node:
       origin_y: -20.0
 
     mapping:
-      l_hit: 0.85
-      l_miss: 0.40
+      l_hit: 0.65
+      l_miss: 0.25
       l_min: -5.0
       l_max: 5.0
-      map_beam_step: 2
+      map_beam_step: 4
+      min_valid_range: 0.08
 
     scan_match:
-      enable: true
+      enable: false
       beam_step: 8
       occ_thresh: 1.0
       range_margin: 0.10
-      min_occupied_cells_to_enable: 500
-      min_score_to_accept: 5
+      min_occupied_cells_to_enable: 150
+      min_score_to_accept: 12
+      max_translation_jump: 0.08
+      max_rotation_jump_deg: 8.0
+      skip_map_update_if_rejected: true
 
-      coarse_dx: 0.20
-      coarse_dy: 0.20
-      coarse_dth_deg: 10.0
+      coarse_dx: 0.12
+      coarse_dy: 0.12
+      coarse_dth_deg: 6.0
       coarse_step_xy: 0.03
       coarse_step_th_deg: 2.0
 
-      fine_dx: 0.06
-      fine_dy: 0.06
-      fine_dth_deg: 4.0
+      fine_dx: 0.04
+      fine_dy: 0.04
+      fine_dth_deg: 2.0
       fine_step_xy: 0.01
       fine_step_th_deg: 0.5
