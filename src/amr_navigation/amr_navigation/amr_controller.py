@@ -45,24 +45,9 @@ class NavState(str, Enum):
 
 
 class AMRController(Node):
-    """
-    Production-style project controller for a custom AMR stack.
-
-    Inputs:
-      - /global_path   (Path, map frame)
-      - /slam_pose     (PoseStamped, map frame)
-      - /odom          (velocity feedback)
-      - /scan          (LaserScan)
-      - /goal_pose     (PoseStamped, map frame)
-
-    Output:
-      - /cmd_vel
-    """
-
     def __init__(self):
-        super().__init__("dwa_controller")
+        super().__init__("amr_controller")
 
-        # Topics
         self.declare_parameter("path_topic", "/global_path")
         self.declare_parameter("slam_pose_topic", "/slam_pose")
         self.declare_parameter("odom_topic", "/odom")
@@ -70,40 +55,31 @@ class AMRController(Node):
         self.declare_parameter("goal_topic", "/goal_pose")
         self.declare_parameter("cmd_vel_topic", "/cmd_vel")
 
-        # Motion
-        self.declare_parameter("v_nominal", 0.18)
-        self.declare_parameter("v_slow", 0.08)
+        self.declare_parameter("v_nominal", 0.20)
+        self.declare_parameter("v_slow", 0.10)
         self.declare_parameter("v_escape", -0.10)
-        self.declare_parameter("w_max", 1.2)
-        self.declare_parameter("rotate_gain", 1.8)
-        self.declare_parameter("track_gain", 1.6)
+        self.declare_parameter("w_max", 0.85)
+        self.declare_parameter("rotate_gain", 1.35)
+        self.declare_parameter("track_gain", 1.15)
 
-        # Geometry / safety
-        self.declare_parameter("robot_radius", 0.16)
-        self.declare_parameter("safety_margin", 0.05)
-        self.declare_parameter("front_obstacle_stop_dist", 0.32)
-        self.declare_parameter("front_obstacle_slow_dist", 0.55)
+        self.declare_parameter("lookahead_dist", 0.80)
+        self.declare_parameter("goal_tolerance", 0.18)
+        self.declare_parameter("heading_align_threshold", 0.80)
+        self.declare_parameter("heading_track_threshold", 0.35)
+
+        self.declare_parameter("front_obstacle_stop_dist", 0.28)
+        self.declare_parameter("front_obstacle_slow_dist", 0.48)
         self.declare_parameter("side_sector_deg", 65.0)
         self.declare_parameter("front_sector_deg", 28.0)
 
-        # Path following
-        self.declare_parameter("lookahead_dist", 0.65)
-        self.declare_parameter("goal_tolerance", 0.18)
-        self.declare_parameter("heading_align_threshold", 0.55)
-        self.declare_parameter("heading_track_threshold", 0.22)
+        self.declare_parameter("progress_timeout_sec", 3.5)
+        self.declare_parameter("progress_min_distance", 0.035)
+        self.declare_parameter("stuck_speed_threshold", 0.012)
+        self.declare_parameter("stuck_cycles_before_recovery", 34)
 
-        # Progress / stuck detection
-        self.declare_parameter("progress_timeout_sec", 2.0)
-        self.declare_parameter("progress_min_distance", 0.06)
-        self.declare_parameter("stuck_speed_threshold", 0.02)
-        self.declare_parameter("stuck_cycles_before_recovery", 18)
-
-        # Recovery timing
-        self.declare_parameter("spin_recovery_time", 1.8)
-        self.declare_parameter("escape_recovery_time", 2.2)
-        self.declare_parameter("recovery_cooldown_time", 1.0)
-
-        # Control
+        self.declare_parameter("spin_recovery_time", 0.8)
+        self.declare_parameter("escape_recovery_time", 1.0)
+        self.declare_parameter("recovery_cooldown_time", 2.5)
         self.declare_parameter("control_period", 0.05)
 
         self.path: Optional[Path] = None
@@ -123,6 +99,8 @@ class AMRController(Node):
         self.stuck_counter = 0
         self.last_progress_pose: Optional[Pose2D] = None
         self.last_progress_time: float = 0.0
+        self.last_failure_reason = ""
+        self.last_debug_time = 0.0
 
         self.create_subscription(Path, self.get_parameter("path_topic").value, self._path_cb, 10)
         self.create_subscription(PoseStamped, self.get_parameter("slam_pose_topic").value, self._slam_pose_cb, 20)
@@ -135,12 +113,24 @@ class AMRController(Node):
 
         self.get_logger().info("AMR controller started.")
 
-    # ---------------- ROS callbacks ----------------
     def _path_cb(self, msg: Path):
+        pts = [(p.pose.position.x, p.pose.position.y) for p in msg.poses]
+
+        if len(pts) < 2:
+            self.path = msg
+            self.path_pts = pts
+            self.closest_idx = 0
+            return
+
+        filtered = [pts[0]]
+        for p in pts[1:]:
+            if math.hypot(p[0] - filtered[-1][0], p[1] - filtered[-1][1]) > 0.03:
+                filtered.append(p)
+
         self.path = msg
-        self.path_pts = [(p.pose.position.x, p.pose.position.y) for p in msg.poses]
+        self.path_pts = filtered
         self.closest_idx = 0
-        self.get_logger().info(f"Received global path with {len(self.path_pts)} poses.")
+        self.get_logger().info(f"Received global path with {len(self.path_pts)} filtered poses.")
 
     def _slam_pose_cb(self, msg: PoseStamped):
         self.slam_pose = msg
@@ -153,13 +143,20 @@ class AMRController(Node):
 
     def _goal_cb(self, msg: PoseStamped):
         self.goal_pose = msg
-        self.get_logger().info(
-            f"Received goal ({msg.pose.position.x:.2f}, {msg.pose.position.y:.2f})"
-        )
-        if self.state in (NavState.IDLE, NavState.GOAL_REACHED):
-            self.set_state(NavState.ALIGN)
+        self.stuck_counter = 0
+        self.last_failure_reason = ""
 
-    # ---------------- Main loop ----------------
+        if self.slam_pose is not None:
+            pose = self.get_pose_from_slam(self.slam_pose)
+            self.reset_progress_monitor(pose)
+        else:
+            self.last_progress_pose = None
+            self.last_progress_time = self.now_s()
+
+        self.get_logger().info(f"Received goal ({msg.pose.position.x:.2f}, {msg.pose.position.y:.2f})")
+
+        self.set_state(NavState.ALIGN)
+
     def _tick(self):
         if self.slam_pose is None or self.odom is None or self.scan is None:
             return
@@ -168,17 +165,21 @@ class AMRController(Node):
         now = self.now_s()
 
         if self.goal_pose is None or not self.path_pts:
+            self.set_failure_reason("no_goal_or_no_path")
             self.set_state(NavState.IDLE)
             self.publish_stop()
             return
 
         if self.goal_reached(pose):
+            self.set_failure_reason("goal_reached")
             self.set_state(NavState.GOAL_REACHED)
             self.publish_stop()
             return
 
         target = self.pick_target_on_path(pose.x, pose.y)
         heading_err = self.angle_to_target(pose, target)
+        front = self.front_clearance(self.scan)
+        left, right = self.side_clearances(self.scan)
 
         if self.state == NavState.IDLE:
             self.set_state(NavState.ALIGN)
@@ -188,23 +189,32 @@ class AMRController(Node):
                 self.reset_progress_monitor(pose)
                 self.set_state(NavState.TRACK)
             else:
+                self.set_failure_reason("aligning_large_heading_error")
                 self.publish_rotate_toward(heading_err)
+                self.debug_print(now, heading_err, front, left, right, None)
                 return
 
         if self.state == NavState.TRACK:
             if abs(heading_err) > float(self.get_parameter("heading_align_threshold").value):
+                self.set_failure_reason("heading_too_large_back_to_align")
                 self.set_state(NavState.ALIGN)
                 self.publish_rotate_toward(heading_err)
+                self.debug_print(now, heading_err, front, left, right, None)
                 return
 
-            cmd = self.compute_tracking_cmd(pose, target, heading_err)
+            cmd = self.compute_tracking_cmd(heading_err, front)
             self.cmd_pub.publish(cmd)
 
             self.update_progress_monitor(pose, cmd, now)
 
-            if now >= self.recovery_cooldown_until and self.is_stuck():
-                self.get_logger().warn("No progress detected. Entering recovery.")
+            if self.state == NavState.TRACK and now >= self.recovery_cooldown_until and self.is_stuck():
+                self.set_failure_reason("stuck_no_progress")
+                self.get_logger().warn("No forward progress detected. Entering recovery.")
                 self.start_spin_recovery()
+                self.debug_print(now, heading_err, front, left, right, cmd)
+                return
+
+            self.debug_print(now, heading_err, front, left, right, cmd)
             return
 
         if self.state == NavState.RECOVERY_SPIN:
@@ -216,6 +226,8 @@ class AMRController(Node):
             cmd.linear.x = 0.0
             cmd.angular.z = 0.55 * self.escape_turn_sign
             self.cmd_pub.publish(cmd)
+            self.set_failure_reason("recovery_spin")
+            self.debug_print(now, heading_err, front, left, right, cmd)
             return
 
         if self.state == NavState.RECOVERY_ESCAPE:
@@ -225,18 +237,24 @@ class AMRController(Node):
 
             cmd = Twist()
             cmd.linear.x = float(self.get_parameter("v_escape").value)
-            cmd.angular.z = 0.6 * self.escape_turn_sign
+            cmd.angular.z = 0.45 * self.escape_turn_sign
             self.cmd_pub.publish(cmd)
+            self.set_failure_reason("recovery_escape")
+            self.debug_print(now, heading_err, front, left, right, cmd)
             return
 
         if self.state == NavState.GOAL_REACHED:
             self.publish_stop()
 
-    # ---------------- State / recovery ----------------
     def set_state(self, new_state: NavState):
         if self.state != new_state:
             self.state = new_state
             self.get_logger().info(f"State -> {self.state}")
+
+    def set_failure_reason(self, reason: str):
+        if self.last_failure_reason != reason:
+            self.last_failure_reason = reason
+            self.get_logger().info(f"Reason -> {reason}")
 
     def start_spin_recovery(self):
         self.escape_turn_sign = self.choose_escape_turn_sign()
@@ -252,12 +270,12 @@ class AMRController(Node):
         self.recovery_end_time = None
         self.recovery_cooldown_until = self.now_s() + float(self.get_parameter("recovery_cooldown_time").value)
         self.reset_progress_monitor(pose)
+        self.set_failure_reason("recovery_finished")
         self.set_state(NavState.ALIGN)
 
     def recovery_done(self, now_s: float) -> bool:
         return self.recovery_end_time is None or now_s >= self.recovery_end_time
 
-    # ---------------- Pose / path helpers ----------------
     def get_pose_from_slam(self, pose_msg: PoseStamped) -> Pose2D:
         p = pose_msg.pose.position
         q = pose_msg.pose.orientation
@@ -276,12 +294,10 @@ class AMRController(Node):
     def pick_target_on_path(self, x: float, y: float) -> Tuple[float, float]:
         self.closest_idx = self.find_closest_index(self.path_pts, x, y, self.closest_idx)
         L = float(self.get_parameter("lookahead_dist").value)
-
         for i in range(self.closest_idx, len(self.path_pts)):
             px, py = self.path_pts[i]
             if math.hypot(px - x, py - y) >= L:
                 return (px, py)
-
         return self.path_pts[-1]
 
     def find_closest_index(self, pts, x, y, start_idx: int) -> int:
@@ -297,10 +313,7 @@ class AMRController(Node):
                 best_i = i
         return best_i
 
-    # ---------------- Tracking ----------------
-    def compute_tracking_cmd(self, pose: Pose2D, target: Tuple[float, float], heading_err: float) -> Twist:
-        front_clearance = self.front_clearance(self.scan)
-
+    def compute_tracking_cmd(self, heading_err: float, front_clearance: float) -> Twist:
         v_nominal = float(self.get_parameter("v_nominal").value)
         v_slow = float(self.get_parameter("v_slow").value)
         w_max = float(self.get_parameter("w_max").value)
@@ -313,7 +326,8 @@ class AMRController(Node):
 
         if front_clearance < stop_dist:
             cmd.linear.x = 0.0
-            cmd.angular.z = max(-w_max, min(w_max, track_gain * heading_err))
+            cmd.angular.z = max(-0.6, min(0.6, 0.8 * heading_err))
+            self.set_failure_reason("front_blocked_rotate_only")
             return cmd
 
         if front_clearance < slow_dist or abs(heading_err) > 0.35:
@@ -322,6 +336,7 @@ class AMRController(Node):
             cmd.linear.x = v_nominal
 
         cmd.angular.z = max(-w_max, min(w_max, track_gain * heading_err))
+        self.set_failure_reason("tracking")
         return cmd
 
     def publish_rotate_toward(self, heading_err: float):
@@ -336,15 +351,14 @@ class AMRController(Node):
     def publish_stop(self):
         self.cmd_pub.publish(Twist())
 
-    # ---------------- Scan analysis ----------------
     def front_clearance(self, scan: LaserScan) -> float:
-        front_deg = float(self.get_parameter("front_sector_deg").value)
-        return self.min_clearance_in_sector(scan, -front_deg, front_deg)
+        half = float(self.get_parameter("front_sector_deg").value)
+        return self.min_clearance_in_sector(scan, -half, half)
 
     def side_clearances(self, scan: LaserScan) -> Tuple[float, float]:
-        side_deg = float(self.get_parameter("side_sector_deg").value)
-        left = self.avg_clearance_in_sector(scan, 20.0, side_deg)
-        right = self.avg_clearance_in_sector(scan, -side_deg, -20.0)
+        side = float(self.get_parameter("side_sector_deg").value)
+        left = self.avg_clearance_in_sector(scan, 20.0, side)
+        right = self.avg_clearance_in_sector(scan, -side, -20.0)
         return left, right
 
     def choose_escape_turn_sign(self) -> float:
@@ -363,9 +377,11 @@ class AMRController(Node):
         best = float("inf")
         amin = math.radians(deg_min)
         amax = math.radians(deg_max)
+        low = min(amin, amax)
+        high = max(amin, amax)
 
         for r in scan.ranges:
-            if amin <= a <= amax and math.isfinite(r) and scan.range_min < r < scan.range_max:
+            if low <= a <= high and math.isfinite(r) and scan.range_min < r < scan.range_max:
                 if r < best:
                     best = r
             a += scan.angle_increment
@@ -380,7 +396,6 @@ class AMRController(Node):
         vals = []
         amin = math.radians(deg_min)
         amax = math.radians(deg_max)
-
         low = min(amin, amax)
         high = max(amin, amax)
 
@@ -393,7 +408,6 @@ class AMRController(Node):
             return 10.0
         return float(sum(vals) / len(vals))
 
-    # ---------------- Stuck / progress monitoring ----------------
     def reset_progress_monitor(self, pose: Pose2D):
         self.last_progress_pose = Pose2D(pose.x, pose.y, pose.th)
         self.last_progress_time = self.now_s()
@@ -401,16 +415,7 @@ class AMRController(Node):
 
     def update_progress_monitor(self, pose: Pose2D, cmd: Twist, now_s: float):
         actual_v = float(self.odom.twist.twist.linear.x)
-        actual_w = float(self.odom.twist.twist.angular.z)
         stuck_speed = float(self.get_parameter("stuck_speed_threshold").value)
-
-        commanded_motion = abs(cmd.linear.x) > 0.04 or abs(cmd.angular.z) > 0.12
-        actual_motion = abs(actual_v) > stuck_speed or abs(actual_w) > stuck_speed
-
-        if commanded_motion and not actual_motion:
-            self.stuck_counter += 1
-        else:
-            self.stuck_counter = max(0, self.stuck_counter - 1)
 
         if self.last_progress_pose is None:
             self.reset_progress_monitor(pose)
@@ -424,17 +429,47 @@ class AMRController(Node):
         timeout = float(self.get_parameter("progress_timeout_sec").value)
         min_dist = float(self.get_parameter("progress_min_distance").value)
 
+        trying_to_translate = abs(cmd.linear.x) > 0.05
+        actual_translation = abs(actual_v) > stuck_speed
+
         if progress >= min_dist:
             self.last_progress_pose = Pose2D(pose.x, pose.y, pose.th)
             self.last_progress_time = now_s
             self.stuck_counter = 0
-        elif now_s - self.last_progress_time > timeout:
-            self.stuck_counter += 2
+            return
+
+        if trying_to_translate:
+            if not actual_translation:
+                self.stuck_counter += 1
+
+            if now_s - self.last_progress_time > timeout:
+                self.stuck_counter += 1
+                self.last_progress_time = now_s
+        else:
+            self.stuck_counter = max(0, self.stuck_counter - 1)
+            self.last_progress_time = now_s
 
     def is_stuck(self) -> bool:
         return self.stuck_counter >= int(self.get_parameter("stuck_cycles_before_recovery").value)
 
-    # ---------------- Time ----------------
+    def debug_print(self, now: float, heading_err: float, front: float, left: float, right: float, cmd: Optional[Twist]):
+        if now - self.last_debug_time < 0.7:
+            return
+        self.last_debug_time = now
+
+        if cmd is None:
+            v = 0.0
+            w = 0.0
+        else:
+            v = cmd.linear.x
+            w = cmd.angular.z
+
+        self.get_logger().info(
+            f"[CTRL] state={self.state} reason={self.last_failure_reason} "
+            f"heading_err={heading_err:.3f} front={front:.2f} left={left:.2f} right={right:.2f} "
+            f"stuck_counter={self.stuck_counter} cmd=({v:.2f},{w:.2f})"
+        )
+
     def now_s(self) -> float:
         return self.get_clock().now().nanoseconds / 1e9
 
